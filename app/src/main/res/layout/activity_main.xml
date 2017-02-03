@@ -20,26 +20,26 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="1">
 
         <Button
-            android:text="Button"
+            android:text="Attempt at draggable bar chart so far"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/draw_b"
             />
         <Button
-            android:text="Button"
+            android:text="bar chart: MP-Android-Chart lib"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lib_b"
             />
 
 
-
         <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
+            android:text="I'm leaving this bar chart stuff in different activities untill I get it working better "
+            android:layout_width="299dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"

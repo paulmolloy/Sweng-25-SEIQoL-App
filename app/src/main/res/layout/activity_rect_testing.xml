@@ -18,11 +18,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <Button
-            android:text="Button"
+        <TextView
+            android:text="Touch screen to intialise bar. Drag to increase size. Really buggy right now."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button" />
+            android:id="@+id/textView2" />
+
+
         <com.example.sweng.seiqol_app.DraggableBar
             android:text="Bar"
             android:layout_width="match_parent"
