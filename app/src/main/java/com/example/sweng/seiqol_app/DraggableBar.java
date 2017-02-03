@@ -16,6 +16,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 
+//Beginnings of code for a barChart where the bars are dragable to increase or decrease them.
+
 public class DraggableBar extends View {
 
     Point[] points = new Point[4];
@@ -41,7 +43,7 @@ public class DraggableBar extends View {
     }
 
 
-    // the method that draws the balls
+    // the method that draws the rectangle and shows where the marker will be.
     @Override
     protected void onDraw(Canvas canvas) {
         if(points[3]==null) //point4 null when user did not touch and move on screen.
@@ -69,23 +71,23 @@ public class DraggableBar extends View {
         paint.setColor(Color.parseColor("#AADB1255"));
         paint.setStrokeWidth(2);
         canvas.drawRect(
-                left + m.getWidthOfBall() / 2,
-                top + m.getWidthOfBall() / 2,
-                right + m.getWidthOfBall() / 2,
-                bottom + m.getWidthOfBall() / 2, paint);
+                left + m.getWidthOfMarker() / 2,
+                top + m.getWidthOfMarker() / 2,
+                right + m.getWidthOfMarker() / 2,
+                bottom + m.getWidthOfMarker() / 2, paint);
         //fill the rectangle
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.parseColor("#55DB1255"));
         paint.setStrokeWidth(0);
         canvas.drawRect(
-                left + m.getWidthOfBall() / 2,
-                top + m.getWidthOfBall() / 2,
-                right + m.getWidthOfBall() / 2,
-                bottom + m.getWidthOfBall() / 2, paint);
+                left + m.getWidthOfMarker() / 2,
+                top + m.getWidthOfMarker() / 2,
+                right + m.getWidthOfMarker() / 2,
+                bottom + m.getWidthOfMarker() / 2, paint);
 
         //draw the corners
         BitmapDrawable bitmap = new BitmapDrawable();
-        // draw the balls on the canvas
+        // draw 0 where the marker is
         paint.setColor(Color.BLUE);
         paint.setTextSize(18);
         paint.setStrokeWidth(0);
@@ -105,7 +107,7 @@ public class DraggableBar extends View {
         switch (eventaction) {
 
             case MotionEvent.ACTION_DOWN: // touch down so check if the finger is on
-                // a ball
+                // the marker
                 if (points[0] == null) {
                     //initialize rectangle.
                     points[0] = new Point();
@@ -124,30 +126,26 @@ public class DraggableBar extends View {
                     points[3].x = X +90;
                     points[3].y = Y;
 
-                    //balID = 2;
-                    //groupId = 1;
-                    // declare each ball with the ColorBall class
+
+                    // declare the marker with the BarMarker class
                     for (Point pt : points) {
                         m=new BarMarker(getContext(), R.drawable.iconinfo, pt);
                     }
                 } else {
                     //resize rectangle
-                    //balID = -1;
-                    //groupId = -1;
 
-                        //DrawView.ColorBall ball = colorballs.get(i);
-                        // check if inside the bounds of the ball (circle)
-                        // get the center for the ball
-                        int centerX = m.getX() + m.getWidthOfBall();
-                        int centerY = m.getY() + m.getHeightOfBall();
+                        // check if inside the bounds of the marker (circle)
+                        // get the center for the marker
+                        int centerX = m.getX() + m.getWidthOfMarker();
+                        int centerY = m.getY() + m.getHeightOfMarker();
                         paint.setColor(Color.CYAN);
                         // calculate the radius from the touch to the center of the
-                        // ball
+                        // marker
                         double radCircle = Math
                                 .sqrt((double) (((centerX - X) * (centerX - X)) + (centerY - Y)
                                         * (centerY - Y)));
 
-                        if (radCircle < m.getWidthOfBall()) {
+                        if (radCircle < m.getWidthOfMarker()) {
 
 
                             invalidate();
@@ -158,19 +156,15 @@ public class DraggableBar extends View {
                 }
                 break;
 
-            case MotionEvent.ACTION_MOVE: // touch drag with the ball
+            case MotionEvent.ACTION_MOVE: // touch drag with the marker
 
 
-                    // move the balls the same as the finger
-                    //colorballs.get(balID).setX(X);
+                    // move the marker wherever the finger is on the y axis.
                     m.setY(Y);
 
                     paint.setColor(Color.CYAN);
 
-                        //colorballs.get(0).setX(colorballs.get(1).getX());
-                        m.setY(m.getY());
-                        //colorballs.get(2).setX(colorballs.get(3).getX());
-                        //colorballs.get(2).setY(colorballs.get(1).getY());
+                    m.setY(m.getY());
 
 
                     invalidate();
@@ -224,11 +218,11 @@ public class DraggableBar extends View {
             this.point = point;
         }
 
-        public int getWidthOfBall() {
+        public int getWidthOfMarker() {
             return bitmap.getWidth();
         }
 
-        public int getHeightOfBall() {
+        public int getHeightOfMarker() {
             return bitmap.getHeight();
         }
 

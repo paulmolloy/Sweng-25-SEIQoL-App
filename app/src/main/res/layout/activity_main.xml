@@ -28,12 +28,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/draw_b"
             />
-
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/chart"
+        <Button
+            android:text="Button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lib_b"
             />
+
+
 
         <TextView
             android:text="TextView"
