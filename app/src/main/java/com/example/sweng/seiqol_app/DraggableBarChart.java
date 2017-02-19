@@ -83,7 +83,7 @@ public class DraggableBarChart extends View {
         paint.setColor(Color.BLUE);
         paint.setTextSize(25);
         paint.setStrokeWidth(0);
-        canvas.drawText("Testing View Height: "+ this.getHeight() +  " View Width: " + this.getWidth() +  " Selected Bar Value: " + bars.get(barSelected).getHeight(), 100, 100, paint);
+        canvas.drawText("Testing View Height: "+ this.getHeight() +  " View Width: " + this.getWidth() + " Bar Selected: " + barSelected + " Selected Bar Value: " + bars.get(barSelected).getHeight(), 100, 100, paint);
 
 
         paint.setColor(Color.parseColor("#70DB4255"));
@@ -137,6 +137,10 @@ public class DraggableBarChart extends View {
         invalidate();
         return true;
 
+    }
+
+    public void setBarSelected(int pos){
+        this.barSelected=pos;
     }
 
 
