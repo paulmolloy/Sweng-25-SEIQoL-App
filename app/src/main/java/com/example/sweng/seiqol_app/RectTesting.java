@@ -9,6 +9,6 @@ public class RectTesting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rect_testing);
-        DraggableBar myDView = (DraggableBar) findViewById(R.id.dView);
+        DraggableBarChart myDView = (DraggableBarChart) findViewById(R.id.dView);
     }
 }

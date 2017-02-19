@@ -25,7 +25,7 @@
             android:id="@+id/textView2" />
 
 
-        <com.example.sweng.seiqol_app.DraggableBar
+        <com.example.sweng.seiqol_app.DraggableBarChart
             android:text="Bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

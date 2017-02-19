@@ -16,6 +16,9 @@ import android.view.MotionEvent;
 import android.view.View;
 
 
+/**
+This class is no longer used DraggableBarChart replaces it I'll delete it later.
+ */
 //Beginnings of code for a barChart where the bars are dragable to increase or decrease them.
 
 public class DraggableBar extends View {
@@ -160,14 +163,17 @@ public class DraggableBar extends View {
 
 
                     // move the marker wherever the finger is on the y axis.
-                    m.setY(Y);
+                    if(m.getY() > Y){
+                        m.setY(Y);  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!figure this out !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                    paint.setColor(Color.CYAN);
+                        paint.setColor(Color.CYAN);
 
-                    m.setY(m.getY());
+                        m.setY(m.getY());
+                           // m.setY(points[0].y-300);
 
+                        invalidate();
+                    }
 
-                    invalidate();
 
 
                 break;
@@ -188,14 +194,6 @@ public class DraggableBar extends View {
 
 
 
-
-
-
-
-
-
-
-
     public static class Rect {
         Bitmap bitmap;
 
@@ -209,7 +207,6 @@ public class DraggableBar extends View {
         Point point;
         int id;
         static int count = 0;
-
         public BarMarker(Context context, int resourceId, Point point) {
             this.id = count++;
             bitmap = BitmapFactory.decodeResource(context.getResources(),
