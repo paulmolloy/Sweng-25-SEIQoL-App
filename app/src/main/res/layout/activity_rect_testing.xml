@@ -41,7 +41,7 @@
             >
 
             <RadioButton
-                android:text="Bar0"
+                android:text="Bar 0"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton0"
