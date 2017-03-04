@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class RectTesting extends AppCompatActivity {
+    TextView myTv;
     DraggableBarChart myDView;
     RadioGroup rGroup;
     private RadioButton rb0, rb1, rb2,rb3,rb4;
@@ -16,6 +18,7 @@ public class RectTesting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rect_testing);
+        myTv = (TextView) findViewById(R.id.textView2);
         myDView = (DraggableBarChart) findViewById(R.id.dView);
         rGroup = (RadioGroup) findViewById(R.id.rBG0);
         rGroup.check(R.id.radioButton2);
@@ -44,6 +47,7 @@ public class RectTesting extends AppCompatActivity {
                             myDView.setBarSelected(4);
                         break;
                 }
+
 
             }
         });

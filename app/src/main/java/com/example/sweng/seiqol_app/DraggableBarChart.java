@@ -178,6 +178,12 @@ public class DraggableBarChart extends View {
 
     }
 
+    public double getBarValue(int barId){
+        double val = -1;
+        if(barId>-1 && barId<bars.size()) val = bars.get(barId).getPercent();
+        return val;
+    }
+
     public double[] getAllBarValues(){
         double[] vals = new double[bars.size()];
         for(int i=0;i<bars.size();i++){
