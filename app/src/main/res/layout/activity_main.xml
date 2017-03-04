@@ -36,6 +36,13 @@
             android:id="@+id/lib_b"
             />
 
+        <Button
+            android:text="Pie Chart so far"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/draw_pie_b"
+            />
+
 
         <TextView
             android:text="I'm leaving this bar chart stuff in different activities untill I get it working better "

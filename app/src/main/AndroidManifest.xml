@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RectTesting" />
+        <activity android:name=".PieTesting" />
         <activity android:name=".BarChartFromLibrary"></activity>
     </application>
 

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Intent i,j;
+    Intent i,j,k;
     Button drawB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         j = new Intent(MainActivity.this, BarChartFromLibrary.class);
         Button libBarChartB = (Button) findViewById(R.id.lib_b);
         libBarChartB.setOnClickListener(this);
+
+        k = new Intent(MainActivity.this, PieTesting.class);
+        Button drawPieB = (Button) findViewById(R.id.draw_pie_b);
+        drawPieB.setOnClickListener(this);
 
 
     }
@@ -45,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.lib_b:
                 startActivity(j);
+                break;
+            case R.id.draw_pie_b:
+                startActivity(k);
                 break;
             default:
 
