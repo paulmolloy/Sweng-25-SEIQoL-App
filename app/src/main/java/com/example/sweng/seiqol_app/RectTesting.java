@@ -18,6 +18,7 @@ public class RectTesting extends AppCompatActivity {
         setContentView(R.layout.activity_rect_testing);
         myDView = (DraggableBarChart) findViewById(R.id.dView);
         rGroup = (RadioGroup) findViewById(R.id.rBG0);
+        rGroup.check(R.id.radioButton2);
 
 
 

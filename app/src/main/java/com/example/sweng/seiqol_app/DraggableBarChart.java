@@ -22,14 +22,13 @@ import java.util.ArrayList;
 
 public class DraggableBarChart extends View {
 
-    ArrayList<Bar> bars = new ArrayList<Bar>();
-    int  barSelected= 2;//-1;
-    int barWidth = 70;
     public static final int LEFT_PADDING = 150;
-    public static final int TOP_PADDING = 200;
-    public static final int BOTTOM_PADDING = 500;
-    public static final int Y_AXIS_PADDING = 100;
+    public static final int Y_AXIS_PADDING = 20;
     public static final int Y_TEXT_PADDING = 20;
+    private ArrayList<Bar> bars = new ArrayList<Bar>();
+    private int  barSelected= 2;//-1;
+    private int barWidth = 70;
+    private boolean isFirstDraw = true;
     private double scaleFactor;
 
     Paint paint;
@@ -41,13 +40,13 @@ public class DraggableBarChart extends View {
         setFocusable(true); // necessary for getting the touch events
         canvas = new Canvas();
         addBars();
-        scaleFactor = ((double) this.getHeight() -TOP_PADDING-Y_AXIS_PADDING)/this.getHeight();
+        scaleFactor = 1;
     }
 
     public DraggableBarChart(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         addBars();
-        scaleFactor = ((double) this.getHeight() -TOP_PADDING-Y_AXIS_PADDING)/this.getHeight();
+        scaleFactor = 1;
     }
 
     public DraggableBarChart(Context context, AttributeSet attrs) {
@@ -56,7 +55,7 @@ public class DraggableBarChart extends View {
         setFocusable(true); // necessary for getting the touch events
         canvas = new Canvas();
         addBars();
-        scaleFactor = ((double) this.getHeight() -TOP_PADDING-Y_AXIS_PADDING)/this.getHeight();
+        scaleFactor = 1;
 
     }
 
@@ -64,18 +63,24 @@ public class DraggableBarChart extends View {
         /*
             Add the five bars for the SEiQoL the colors are picked from the photo of the bar chart
          */
-        //second param isnt used
-        bars.add(new Bar(50,150,400, "#dcbd0d"));//yellow
-        bars.add(new Bar(200,350,600, "#909baf"));//grey
-        bars.add(new Bar(350,550,400, "#de571d"));//red/orange
-        bars.add(new Bar(500,750,600, "#7f628e"));//purple
-        bars.add(new Bar(650,950,1000, "#308754"));//gree
+        bars.add(new Bar(50,.3, "#dcbd0d"));//yellow
+        bars.add(new Bar(200,.4, "#909baf"));//grey
+        bars.add(new Bar(350,1, "#de571d"));//red/orange
+        bars.add(new Bar(500,.3, "#7f628e"));//purple
+        bars.add(new Bar(650, .6, "#308754"));//green
     }
 
     // the method that draws the individual bars
     // and shows where the marker will be.
     @Override
     protected void onDraw(Canvas canvas) {
+        if(isFirstDraw){//scale bars to the size of the view
+            scaleFactor = ((double) this.getHeight() -Y_AXIS_PADDING-Y_AXIS_PADDING)/this.getHeight();
+            for(Bar b : bars){
+                b.setHeight( (int) (b.getPercent()*(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING)));
+            }
+            isFirstDraw=false;
+        }
 
         paint.setAntiAlias(true);
         paint.setDither(true);
@@ -93,8 +98,8 @@ public class DraggableBarChart extends View {
         paint.setColor(Color.BLUE);
         paint.setTextSize(25);
         paint.setStrokeWidth(0);
-        canvas.drawText( ((double)bars.get(barSelected).getHeight())/(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING) + "%  Bar Selected: " + barSelected
-                + " Selected Bar Value: " + bars.get(barSelected).getHeight(), LEFT_PADDING,TOP_PADDING-Y_AXIS_PADDING-paint.getTextSize(), paint);
+        canvas.drawText( bars.get(barSelected).getPercent() + "%  Bar Selected: " + barSelected
+                + " Selected Bar Value: " + bars.get(barSelected).getHeight(), LEFT_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
 
 
         paint.setColor(Color.parseColor("#70DB4255"));
@@ -105,14 +110,12 @@ public class DraggableBarChart extends View {
             canvas.drawRect( LEFT_PADDING+ bar.getX(),this.getHeight()-Y_AXIS_PADDING,LEFT_PADDING+ bar.getX()+barWidth,
                     this.getHeight()-bar.getHeight()-Y_AXIS_PADDING,paint);
         }
-        
-        
-        
+
         /* Draw axis here
          */
         paint.setColor(Color.GRAY);
-        canvas.drawText("Best", Y_TEXT_PADDING,TOP_PADDING-Y_AXIS_PADDING+paint.getTextSize(), paint);
-        canvas.drawText("Possible", Y_TEXT_PADDING,TOP_PADDING-Y_AXIS_PADDING+(2*paint.getTextSize()), paint);
+        canvas.drawText("Best", Y_TEXT_PADDING,Y_AXIS_PADDING+paint.getTextSize(), paint);
+        canvas.drawText("Possible", Y_TEXT_PADDING,Y_AXIS_PADDING+(2*paint.getTextSize()), paint);
 
         canvas.drawText("Worst", Y_TEXT_PADDING,this.getHeight()-Y_AXIS_PADDING-paint.getTextSize(), paint);
         canvas.drawText("Possible", Y_TEXT_PADDING,this.getHeight()-Y_AXIS_PADDING, paint);
@@ -120,7 +123,7 @@ public class DraggableBarChart extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
 
-        canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, LEFT_PADDING,TOP_PADDING-Y_AXIS_PADDING, paint); //Y axis line.
+        canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, LEFT_PADDING,Y_AXIS_PADDING, paint); //Y axis line.
         canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, this.getWidth(),this.getHeight()-Y_AXIS_PADDING, paint); // X axis line.
 
     }
@@ -150,7 +153,6 @@ public class DraggableBarChart extends View {
                         Bar cBar = bars.get(barSelected);
                         if(Y>=Y_AXIS_PADDING&& Y<=this.getHeight()-Y_AXIS_PADDING){ //prevents bar from going higher than view
                             cBar.setHeight(this.getHeight()-Y-Y_AXIS_PADDING);
-
                         }
                         else if( Y>this.getHeight()-Y_AXIS_PADDING){//added to make it easier to set a bar to max or min.
                             cBar.setHeight(0);
@@ -158,6 +160,8 @@ public class DraggableBarChart extends View {
                         }else if(Y<Y_AXIS_PADDING){
                             cBar.setHeight(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING);
                         }
+                        cBar.setPercent(((double)bars.get(barSelected).getHeight())/(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING));
+
                     }
 
 
@@ -174,6 +178,14 @@ public class DraggableBarChart extends View {
 
     }
 
+    public double[] getAllBarValues(){
+        double[] vals = new double[bars.size()];
+        for(int i=0;i<bars.size();i++){
+            vals[i]=bars.get(i).getPercent();
+        }
+        return vals;
+    }
+
     public void setBarSelected(int pos){
         this.barSelected=pos;
     }
@@ -181,46 +193,45 @@ public class DraggableBarChart extends View {
 
     public class Bar{
         private int height;
-        private Point p;
+        private double percent;
         private int c;
+        private int x;
 
 
-
-        public Bar(int x,int y,int height){
-            this.p = new Point(x,y);
-            this.height = height;
+        public Bar(int x,double percent){
+            this.percent = percent;
             c = Color.parseColor("#AADB1255");
+            this.x = x;
         }
-        public Bar(int x,int y,int height, String color){
-            this.p = new Point(x,y);
-            this.height = height;
+
+        public Bar(int x, double percent,String color){
+            this.percent = percent;
             c = Color.parseColor(color);
+            this.x=x;
         }
 
         public int getC(){
             return c;
         }
 
+        public double getPercent(){
+            return percent;
+        }
+        public void setPercent(double percent){
+             this.percent =percent;
+        }
+
         public int getHeight() {
             return height;
         }
-
         public void setHeight(int height) {
             this.height = height;
         }
         public int getX() {
-            return p.x;
+            return x;
         }
-
         public void setX(int x) {
-            this.p.x = x;
-        }
-        public int getY() {
-            return p.y;
-        }
-
-        public void setY(int y) {
-            this.p.y = y;
+            this.x = x;
         }
     }
 
