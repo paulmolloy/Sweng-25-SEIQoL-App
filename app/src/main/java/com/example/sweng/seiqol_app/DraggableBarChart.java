@@ -24,8 +24,13 @@ public class DraggableBarChart extends View {
 
     ArrayList<Bar> bars = new ArrayList<Bar>();
     int  barSelected= 2;//-1;
-    int barWidth = 80;
-    public static final int RIGHT_PADDING = 50;
+    int barWidth = 70;
+    public static final int LEFT_PADDING = 150;
+    public static final int TOP_PADDING = 200;
+    public static final int BOTTOM_PADDING = 500;
+    public static final int Y_AXIS_PADDING = 100;
+    public static final int Y_TEXT_PADDING = 20;
+    private double scaleFactor;
 
     Paint paint;
     Canvas canvas;
@@ -36,11 +41,13 @@ public class DraggableBarChart extends View {
         setFocusable(true); // necessary for getting the touch events
         canvas = new Canvas();
         addBars();
+        scaleFactor = ((double) this.getHeight() -TOP_PADDING-Y_AXIS_PADDING)/this.getHeight();
     }
 
     public DraggableBarChart(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         addBars();
+        scaleFactor = ((double) this.getHeight() -TOP_PADDING-Y_AXIS_PADDING)/this.getHeight();
     }
 
     public DraggableBarChart(Context context, AttributeSet attrs) {
@@ -49,17 +56,20 @@ public class DraggableBarChart extends View {
         setFocusable(true); // necessary for getting the touch events
         canvas = new Canvas();
         addBars();
+        scaleFactor = ((double) this.getHeight() -TOP_PADDING-Y_AXIS_PADDING)/this.getHeight();
+
     }
 
     private void addBars(){
         /*
             Add the five bars for the SEiQoL the colors are picked from the photo of the bar chart
          */
-        bars.add(new Bar(0,100,400, "#dcbd0d"));//yellow
-        bars.add(new Bar(200,300,600, "#909baf"));//grey
-        bars.add(new Bar(400,500,400, "#de571d"));//red/orange
-        bars.add(new Bar(600,700,600, "#7f628e"));//purple
-        bars.add(new Bar(800,900,1000, "#308754"));//gree
+        //second param isnt used
+        bars.add(new Bar(50,150,400, "#dcbd0d"));//yellow
+        bars.add(new Bar(200,350,600, "#909baf"));//grey
+        bars.add(new Bar(350,550,400, "#de571d"));//red/orange
+        bars.add(new Bar(500,750,600, "#7f628e"));//purple
+        bars.add(new Bar(650,950,1000, "#308754"));//gree
     }
 
     // the method that draws the individual bars
@@ -84,7 +94,7 @@ public class DraggableBarChart extends View {
         paint.setTextSize(25);
         paint.setStrokeWidth(0);
         //canvas.drawText("Testing View Height: "+ this.getHeight() +  " View Width: " + this.getWidth() + " Bar Selected: " + barSelected + " Selected Bar Value: " + bars.get(barSelected).getHeight(), 100, 100, paint);
-        canvas.drawText("% out of 100:  "+ ((double)bars.get(barSelected).getHeight())/this.getHeight() + " Bar Selected: " + barSelected + " Selected Bar Value: " + bars.get(barSelected).getHeight(), 100, 100, paint);
+        canvas.drawText( ((double)bars.get(barSelected).getHeight())/(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING) + "%  Bar Selected: " + barSelected + " Selected Bar Value: " + bars.get(barSelected).getHeight(), LEFT_PADDING,TOP_PADDING-Y_AXIS_PADDING-paint.getTextSize(), paint);
 
 
         paint.setColor(Color.parseColor("#70DB4255"));
@@ -92,9 +102,29 @@ public class DraggableBarChart extends View {
 
         for(Bar bar: bars){
             paint.setColor(bar.getC());
-            canvas.drawRect( RIGHT_PADDING+ bar.getX(),this.getHeight(),RIGHT_PADDING+ bar.getX()+barWidth,
-                    this.getHeight()-bar.getHeight(),paint);
+            canvas.drawRect( LEFT_PADDING+ bar.getX(),this.getHeight()-Y_AXIS_PADDING,LEFT_PADDING+ bar.getX()+barWidth,
+                    this.getHeight()-bar.getHeight()-Y_AXIS_PADDING,paint);
         }
+        
+        
+        
+        /* Draw axis here
+         */
+        paint.setColor(Color.GRAY);
+        canvas.drawText("Best", Y_TEXT_PADDING,TOP_PADDING-Y_AXIS_PADDING+paint.getTextSize(), paint);
+        canvas.drawText("Possible", Y_TEXT_PADDING,TOP_PADDING-Y_AXIS_PADDING+(2*paint.getTextSize()), paint);
+
+        canvas.drawText("Worst", Y_TEXT_PADDING,this.getHeight()-Y_AXIS_PADDING-paint.getTextSize(), paint);
+        canvas.drawText("Possible", Y_TEXT_PADDING,this.getHeight()-Y_AXIS_PADDING, paint);
+
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(4);
+
+        canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, LEFT_PADDING,TOP_PADDING-Y_AXIS_PADDING, paint); //Y axis line.
+        canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, this.getWidth(),this.getHeight()-Y_AXIS_PADDING, paint); // X axis line.
+
+
+
 
     }
 
@@ -121,8 +151,15 @@ public class DraggableBarChart extends View {
 
                     if(barSelected!=-1){
                         Bar cBar = bars.get(barSelected);
-                        if(Y>=0 && Y<=this.getHeight()){ //prevents bar from going higher than view
-                            cBar.setHeight(this.getHeight()-Y);
+                        if(Y>=Y_AXIS_PADDING&& Y<=this.getHeight()-Y_AXIS_PADDING){ //prevents bar from going higher than view
+                            cBar.setHeight(this.getHeight()-Y-Y_AXIS_PADDING);
+
+                        }
+                        else if( Y>this.getHeight()-Y_AXIS_PADDING){//added to make it easier to set a bar to max or min.
+                            cBar.setHeight(0);
+
+                        }else if(Y<Y_AXIS_PADDING){
+                            cBar.setHeight(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING);
                         }
                     }
 
