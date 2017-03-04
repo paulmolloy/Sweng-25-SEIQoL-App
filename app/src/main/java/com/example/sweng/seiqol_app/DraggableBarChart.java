@@ -90,7 +90,7 @@ public class DraggableBarChart extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(2);
         paint.setColor(Color.LTGRAY);
-        canvas.drawRect(0,this.getHeight(),this.getWidth(), 0,paint); //draw outline of edges of view
+        //canvas.drawRect(0,this.getHeight(),this.getWidth(), 0,paint); //draw outline of edges of view
 
         paint.setStyle(Paint.Style.FILL);
 
