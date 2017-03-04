@@ -34,7 +34,7 @@ public class DraggableBarChart extends View {
 
     Paint paint;
     Canvas canvas;
-    BarMarker m;
+
     public DraggableBarChart(Context context) {
         super(context);
         paint = new Paint();
@@ -93,8 +93,8 @@ public class DraggableBarChart extends View {
         paint.setColor(Color.BLUE);
         paint.setTextSize(25);
         paint.setStrokeWidth(0);
-        //canvas.drawText("Testing View Height: "+ this.getHeight() +  " View Width: " + this.getWidth() + " Bar Selected: " + barSelected + " Selected Bar Value: " + bars.get(barSelected).getHeight(), 100, 100, paint);
-        canvas.drawText( ((double)bars.get(barSelected).getHeight())/(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING) + "%  Bar Selected: " + barSelected + " Selected Bar Value: " + bars.get(barSelected).getHeight(), LEFT_PADDING,TOP_PADDING-Y_AXIS_PADDING-paint.getTextSize(), paint);
+        canvas.drawText( ((double)bars.get(barSelected).getHeight())/(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING) + "%  Bar Selected: " + barSelected
+                + " Selected Bar Value: " + bars.get(barSelected).getHeight(), LEFT_PADDING,TOP_PADDING-Y_AXIS_PADDING-paint.getTextSize(), paint);
 
 
         paint.setColor(Color.parseColor("#70DB4255"));
@@ -122,9 +122,6 @@ public class DraggableBarChart extends View {
 
         canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, LEFT_PADDING,TOP_PADDING-Y_AXIS_PADDING, paint); //Y axis line.
         canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, this.getWidth(),this.getHeight()-Y_AXIS_PADDING, paint); // X axis line.
-
-
-
 
     }
 
@@ -228,59 +225,5 @@ public class DraggableBarChart extends View {
     }
 
 
-
-    public static class Rect {
-        Bitmap bitmap;
-
-    }
-
-
-    public static class BarMarker {
-
-        Bitmap bitmap;
-        Context mContext;
-        Point point;
-        int id;
-        static int count = 0;
-        public BarMarker(Context context, int resourceId, Point point) {
-            this.id = count++;
-            bitmap = BitmapFactory.decodeResource(context.getResources(),
-                    resourceId);
-            mContext = context;
-            this.point = point;
-        }
-
-        public int getWidthOfMarker() {
-            return bitmap.getWidth();
-        }
-
-        public int getHeightOfMarker() {
-            return bitmap.getHeight();
-        }
-
-        public Bitmap getBitmap() {
-            return bitmap;
-        }
-
-        public int getX() {
-            return point.x;
-        }
-
-        public int getY() {
-            return point.y;
-        }
-
-        public int getID() {
-            return id;
-        }
-
-        public void setX(int x) {
-            point.x = x;
-        }
-
-        public void setY(int y) {
-            point.y = y;
-        }
-    }
 
 }
