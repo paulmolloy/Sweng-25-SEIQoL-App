@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -29,6 +30,10 @@ public class DraggablePieChart extends View{
 
     Paint paint;
     Canvas canvas;
+
+    private Path mArc;
+
+    private Paint mPaintText;
 
     public DraggablePieChart(Context context) {
         super(context);
@@ -100,16 +105,43 @@ public class DraggablePieChart extends View{
 
         paint.setColor(Color.parseColor("#70DB4255"));
         RectF oval = new RectF();
+        oval.set(200, 200, 800, 800);
+
+        mPaintText = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+
+        /*Draw degree markers here
+         */
+        RectF outerOval = new RectF();
+        outerOval.set(190, 190, 810, 810);
+        Path mArc = new Path();
+        mPaintText.setStyle(Paint.Style.FILL_AND_STROKE);
+        mPaintText.setColor(Color.BLACK);
+        mPaintText.setTextSize(30);
+        for(int i=0;i<360;i+=20){
+            mArc = new Path();
+            mArc.addArc(outerOval, i, i+5);
+            canvas.drawTextOnPath(Integer.toString(i), mArc, 0, -20, mPaintText);
+            canvas.drawArc(outerOval, i,(float) (1), true, mPaintText);
+        }
+        mPaintText.setColor(Color.WHITE);
+        canvas.drawArc(oval, 0,(float) (360), true, mPaintText);
+
 
         for(Bar bar: bars){
             paint.setColor(bar.getC());
-           // canvas.drawRect( LEFT_PADDING+ bar.getX(),this.getHeight()-Y_AXIS_PADDING,LEFT_PADDING+ bar.getX()+barWidth,
-           //         this.getHeight()-bar.getHeight()-Y_AXIS_PADDING,paint);
 
-            oval.set(300, 300, 700, 700);
+
+
             canvas.drawArc(oval, 0,(float) (bar.getPercent()*360), true, paint);
 
+
         }
+
+
+
+
+
 
         /* Draw axis here
          */
