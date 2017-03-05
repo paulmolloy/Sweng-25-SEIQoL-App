@@ -19,14 +19,14 @@
         android:layout_alignParentStart="true">
 
         <TextView
-            android:text="Drag to increase size. Switch selected bar below."
+            android:text="Drag to increase size. Switch selected seg below."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView2" />
 
 
         <com.example.sweng.seiqol_app.DraggablePieChart
-            android:text="Bar"
+            android:text="Pie"
             android:layout_width="match_parent"
             android:layout_height="403dp"
             android:id="@+id/pieView" />
@@ -41,32 +41,32 @@
             >
 
             <RadioButton
-                android:text="Bar 0"
+                android:text="Seg0"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton0"
                 android:layout_weight="1" />
 
             <RadioButton
-                android:text="Bar 1"
+                android:text="Seg1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton1"
                 android:layout_weight="1" />
             <RadioButton
-                android:text="Bar 2"
+                android:text="Seg2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton2"
                 android:layout_weight="1" />
             <RadioButton
-                android:text="Bar 3"
+                android:text="Seg3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton3"
                 android:layout_weight="1" />
             <RadioButton
-                android:text="Bar 4"
+                android:text="Seg4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton4"
