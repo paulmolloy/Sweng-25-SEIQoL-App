@@ -29,6 +29,7 @@ public class DraggablePieChart extends View{
     private double scaleFactor;
     private int centerX;
     private int centerY;
+    private int yCenteringPadding;
 
     Paint paint;
     Canvas canvas;
@@ -66,7 +67,7 @@ public class DraggablePieChart extends View{
         /*
             Add the five bars for the SEiQoL the colors are picked from the photo of the bar chart
          */
-        bars.add(new Bar(50,.3, "#dcbd0d"));//yellow
+        bars.add(new Bar(50, 1, "#dcbd0d"));//yellow
         bars.add(new Bar(200,.4, "#909baf"));//grey
         bars.add(new Bar(350,1, "#de571d"));//red/orange
         bars.add(new Bar(500,.3, "#7f628e"));//purple
@@ -87,8 +88,9 @@ public class DraggablePieChart extends View{
             scaleFactor = ((double) this.getHeight() -Y_AXIS_PADDING-Y_AXIS_PADDING)/this.getHeight();
             for(Bar b : bars){
                 b.setHeight( (int) (b.getPercent()*(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING)));
-                centerY =Y_AXIS_PADDING+(this.getWidth()-Y_AXIS_PADDING -Y_AXIS_PADDING)/2;
-                centerX =Y_AXIS_PADDING+(this.getWidth()-Y_AXIS_PADDING -Y_AXIS_PADDING)/2;
+                yCenteringPadding = (this.getHeight()/2)-(this.getWidth()/2)-Y_AXIS_PADDING;
+                centerY =yCenteringPadding+Y_AXIS_PADDING+(this.getWidth()-Y_AXIS_PADDING -Y_AXIS_PADDING)/2;
+                centerX =yCenteringPadding+Y_AXIS_PADDING+(this.getWidth()-Y_AXIS_PADDING -Y_AXIS_PADDING)/2;
 
             }
             isFirstDraw=false;
@@ -116,7 +118,7 @@ public class DraggablePieChart extends View{
 
         paint.setColor(Color.parseColor("#70DB4255"));
         RectF oval = new RectF();
-        oval.set(Y_AXIS_PADDING+20, Y_AXIS_PADDING+20, this.getWidth()-Y_AXIS_PADDING-20, this.getWidth()-Y_AXIS_PADDING-20);
+        oval.set(Y_AXIS_PADDING+20, Y_AXIS_PADDING+20+yCenteringPadding, this.getWidth()-Y_AXIS_PADDING-20, this.getWidth()-Y_AXIS_PADDING-20+yCenteringPadding);
 
         mPaintText = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -124,7 +126,7 @@ public class DraggablePieChart extends View{
         /*Draw degree markers here
          */
         RectF outerOval = new RectF();
-        outerOval.set(Y_AXIS_PADDING, Y_AXIS_PADDING, this.getWidth()-Y_AXIS_PADDING, this.getWidth()-Y_AXIS_PADDING);
+        outerOval.set(Y_AXIS_PADDING, Y_AXIS_PADDING+yCenteringPadding, this.getWidth()-Y_AXIS_PADDING, this.getWidth()-Y_AXIS_PADDING+yCenteringPadding);
         Path mArc;
         mPaintText.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaintText.setColor(Color.BLACK);
