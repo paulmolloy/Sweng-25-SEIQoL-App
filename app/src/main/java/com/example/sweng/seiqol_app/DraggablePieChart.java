@@ -20,13 +20,15 @@ public class DraggablePieChart extends View{
 
 
     public static final int LEFT_PADDING = 150;
-    public static final int Y_AXIS_PADDING = 20;
+    public static final int Y_AXIS_PADDING = 50;
     public static final int Y_TEXT_PADDING = 20;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private int  barSelected= 2;//-1;
     private int barWidth = 70;
     private boolean isFirstDraw = true;
     private double scaleFactor;
+    private int centerX;
+    private int centerY;
 
     Paint paint;
     Canvas canvas;
@@ -69,6 +71,12 @@ public class DraggablePieChart extends View{
         bars.add(new Bar(350,1, "#de571d"));//red/orange
         bars.add(new Bar(500,.3, "#7f628e"));//purple
         bars.add(new Bar(650, .6, "#308754"));//green
+
+//        bars.add(new Bar(50,0, "#dcbd0d"));//yellow
+//        bars.add(new Bar(200,0, "#909baf"));//grey
+//        bars.add(new Bar(350,1, "#de571d"));//red/orange
+//        bars.add(new Bar(500,0, "#7f628e"));//purple
+//        bars.add(new Bar(650, 0, "#308754"));//green
     }
 
     // the method that draws the individual bars
@@ -79,6 +87,9 @@ public class DraggablePieChart extends View{
             scaleFactor = ((double) this.getHeight() -Y_AXIS_PADDING-Y_AXIS_PADDING)/this.getHeight();
             for(Bar b : bars){
                 b.setHeight( (int) (b.getPercent()*(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING)));
+                centerY =Y_AXIS_PADDING+(this.getWidth()-Y_AXIS_PADDING -Y_AXIS_PADDING)/2;
+                centerX =Y_AXIS_PADDING+(this.getWidth()-Y_AXIS_PADDING -Y_AXIS_PADDING)/2;
+
             }
             isFirstDraw=false;
         }
@@ -91,7 +102,7 @@ public class DraggablePieChart extends View{
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(2);
         paint.setColor(Color.LTGRAY);
-        //canvas.drawRect(0,this.getHeight(),this.getWidth(), 0,paint); //draw outline of edges of view
+        canvas.drawRect(0,this.getHeight(),this.getWidth(), 0,paint); //draw outline of edges of view
 
         paint.setStyle(Paint.Style.FILL);
 
@@ -105,7 +116,7 @@ public class DraggablePieChart extends View{
 
         paint.setColor(Color.parseColor("#70DB4255"));
         RectF oval = new RectF();
-        oval.set(200, 200, 800, 800);
+        oval.set(Y_AXIS_PADDING+20, Y_AXIS_PADDING+20, this.getWidth()-Y_AXIS_PADDING-20, this.getWidth()-Y_AXIS_PADDING-20);
 
         mPaintText = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -113,8 +124,8 @@ public class DraggablePieChart extends View{
         /*Draw degree markers here
          */
         RectF outerOval = new RectF();
-        outerOval.set(190, 190, 810, 810);
-        Path mArc = new Path();
+        outerOval.set(Y_AXIS_PADDING, Y_AXIS_PADDING, this.getWidth()-Y_AXIS_PADDING, this.getWidth()-Y_AXIS_PADDING);
+        Path mArc;
         mPaintText.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaintText.setColor(Color.BLACK);
         mPaintText.setTextSize(30);
@@ -132,31 +143,29 @@ public class DraggablePieChart extends View{
             paint.setColor(bar.getC());
 
 
-
             canvas.drawArc(oval, 0,(float) (bar.getPercent()*360), true, paint);
-
 
         }
 
 
 
 
-
-
-        /* Draw axis here
-         */
-        paint.setColor(Color.GRAY);
-        canvas.drawText("Best", Y_TEXT_PADDING,Y_AXIS_PADDING+paint.getTextSize(), paint);
-        canvas.drawText("Possible", Y_TEXT_PADDING,Y_AXIS_PADDING+(2*paint.getTextSize()), paint);
-
-        canvas.drawText("Worst", Y_TEXT_PADDING,this.getHeight()-Y_AXIS_PADDING-paint.getTextSize(), paint);
-        canvas.drawText("Possible", Y_TEXT_PADDING,this.getHeight()-Y_AXIS_PADDING, paint);
-
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(4);
-
-        canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, LEFT_PADDING,Y_AXIS_PADDING, paint); //Y axis line.
-        canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, this.getWidth(),this.getHeight()-Y_AXIS_PADDING, paint); // X axis line.
+//
+//
+//        /* Draw axis here
+//         */
+//        paint.setColor(Color.GRAY);
+//        canvas.drawText("Best", Y_TEXT_PADDING,Y_AXIS_PADDING+paint.getTextSize(), paint);
+//        canvas.drawText("Possible", Y_TEXT_PADDING,Y_AXIS_PADDING+(2*paint.getTextSize()), paint);
+//
+//        canvas.drawText("Worst", Y_TEXT_PADDING,this.getHeight()-Y_AXIS_PADDING-paint.getTextSize(), paint);
+//        canvas.drawText("Possible", Y_TEXT_PADDING,this.getHeight()-Y_AXIS_PADDING, paint);
+//
+//        paint.setStyle(Paint.Style.STROKE);
+//        paint.setStrokeWidth(4);
+//
+//        canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, LEFT_PADDING,Y_AXIS_PADDING, paint); //Y axis line.
+//        canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, this.getWidth(),this.getHeight()-Y_AXIS_PADDING, paint); // X axis line.
 
     }
 
@@ -182,17 +191,25 @@ public class DraggablePieChart extends View{
             case MotionEvent.ACTION_MOVE: // touch drag with the marker
 
                 if(barSelected!=-1){
+                    double angle =Math.atan(((double)Y-centerY)/(X-centerX))*180/Math.PI;
+                    System.out.println("The angle: " + angle);
+                    System.out.println(X-centerX + "  " + (Y-centerY));
                     Bar cBar = bars.get(barSelected);
-                    if(Y>=Y_AXIS_PADDING&& Y<=this.getHeight()-Y_AXIS_PADDING){ //prevents bar from going higher than view
-                        cBar.setHeight(this.getHeight()-Y-Y_AXIS_PADDING);
-                    }
-                    else if( Y>this.getHeight()-Y_AXIS_PADDING){//added to make it easier to set a bar to max or min.
-                        cBar.setHeight(0);
 
-                    }else if(Y<Y_AXIS_PADDING){
-                        cBar.setHeight(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING);
+                    if( X-centerX>0 && (Y-centerY)>0){
+                        cBar.setPercent(angle/360);
+
                     }
-                    cBar.setPercent(((double)bars.get(barSelected).getHeight())/(this.getHeight()-Y_AXIS_PADDING-Y_AXIS_PADDING));
+                    else if(X-centerX<0 && (Y-centerY)>0){
+                        cBar.setPercent(.5+(angle/360));
+                    }
+                    else if(X-centerX<0 && (Y-centerY)<0){
+                        cBar.setPercent(.5+(angle/360));
+                    }
+                    else if(X-centerX>0 && (Y-centerY)<0){
+                        cBar.setPercent(1+(angle/360));
+                    }
+                    System.out.println("Percentage: " + cBar.getPercent());
 
                 }
 
