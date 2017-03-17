@@ -102,7 +102,7 @@ public class DraggablePieChart extends View{
         paint.setColor(Color.BLUE);
         paint.setTextSize(25);
         paint.setStrokeWidth(0);
-        canvas.drawText( bars.get(barSelected).getPercent() + "%  Seg Selected: " + barSelected, Y_AXIS_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
+        canvas.drawText( getBarValue(barSelected) + "%  Seg Selected: " + barSelected, Y_AXIS_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
 
 
         RectF oval = new RectF();
@@ -191,16 +191,28 @@ public class DraggablePieChart extends View{
 
     }
 
+//    public double getBarValue(int barId){
+//        double val = -1;
+//        if(barId>-1 && barId<bars.size()) val = bars.get(barId).getPercent();
+//        return val;
+//    }
+
     public double getBarValue(int barId){
         double val = -1;
-        if(barId>-1 && barId<bars.size()) val = bars.get(barId).getPercent();
+        if(barId>-1 && barId<bars.size()){
+            if(barId==bars.size()-1){
+                val = bars.get(barId).getPercent();
+            }else{
+                val = bars.get(barId).getPercent() - bars.get(barId+1).getPercent();
+            }
+        }
         return val;
     }
 
     public double[] getAllBarValues(){
         double[] vals = new double[bars.size()];
         for(int i=0;i<bars.size();i++){
-            vals[i]=bars.get(i).getPercent();
+            vals[i]=getBarValue(i);
         }
         return vals;
     }
