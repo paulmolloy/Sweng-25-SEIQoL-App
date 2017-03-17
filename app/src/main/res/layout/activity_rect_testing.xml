@@ -22,22 +22,24 @@
             android:text="Drag to increase size. Switch selected bar below."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2" />
+            android:id="@+id/textView2"
+            />
 
 
         <com.example.sweng.seiqol_app.DraggableBarChart
             android:text="Bar"
             android:layout_width="match_parent"
-            android:layout_height="403dp"
-            android:id="@+id/dView" />
+            android:layout_height="0px"
+            android:id="@+id/dView"
+            android:layout_weight="3"/>
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0px"
             android:orientation="horizontal"
             android:onClick="onRadioButtonClicked"
             android:id="@+id/rBG0"
-
+            android:layout_weight="1"
             >
 
             <RadioButton
