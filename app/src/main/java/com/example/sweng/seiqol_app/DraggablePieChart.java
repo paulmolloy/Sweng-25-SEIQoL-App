@@ -66,10 +66,10 @@ public class DraggablePieChart extends View{
          */
         //first param doesnt matter for pie chart
         bars.add(new Bar(50, 1, "#dcbd0d"));//yellow
-        bars.add(new Bar(200,.4, "#909baf"));//grey
-        bars.add(new Bar(350,1, "#de571d"));//red/orange
-        bars.add(new Bar(500,.3, "#7f628e"));//purple
-        bars.add(new Bar(650, .6, "#308754"));//green
+        bars.add(new Bar(200,.8, "#909baf"));//grey
+        bars.add(new Bar(350,.6, "#de571d"));//red/orange
+        bars.add(new Bar(500,.4, "#7f628e"));//purple
+        bars.add(new Bar(650, .2, "#308754"));//green
 
     }
 
@@ -156,7 +156,7 @@ public class DraggablePieChart extends View{
 
             case MotionEvent.ACTION_MOVE: // touch drag with the marker
 
-                if(barSelected!=-1){
+                if(barSelected!=-1 && barSelected!=0){
                     double angle =Math.atan(((double)Y-centerY)/(X-centerX))*180/Math.PI;
                     System.out.println("The angle: " + angle);
                     System.out.println(X-centerX + "  " + (Y-centerY));
