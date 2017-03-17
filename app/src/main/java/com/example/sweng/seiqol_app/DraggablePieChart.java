@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class DraggablePieChart extends View{
 
+    public static final int CUR_BAR_TAB_WIDTH = 10;
+    public static final int CUR_BAR_TAB_HEIGHT = 10;
 
     public static final int Y_AXIS_PADDING = 50;
     public static final int TEXT_PADDING = 20;
@@ -127,10 +129,19 @@ public class DraggablePieChart extends View{
         mPaintText.setColor(Color.WHITE);
         canvas.drawArc(oval, 0,(float) (NUM_DEGREES), true, mPaintText);
 
+        oval.set(Y_AXIS_PADDING+TEXT_PADDING - CUR_BAR_TAB_HEIGHT, Y_AXIS_PADDING+TEXT_PADDING+yCenteringPadding - CUR_BAR_TAB_HEIGHT, this.getWidth()-Y_AXIS_PADDING-TEXT_PADDING + CUR_BAR_TAB_HEIGHT, this.getWidth()-Y_AXIS_PADDING-TEXT_PADDING+yCenteringPadding + CUR_BAR_TAB_HEIGHT);
+        paint.setColor(bars.get(barSelected).getC());
+        canvas.drawArc(oval, (float) (bars.get(barSelected).getPercent()*NUM_DEGREES)-CUR_BAR_TAB_WIDTH ,CUR_BAR_TAB_WIDTH, true, paint);
+
+
+        oval.set(Y_AXIS_PADDING+TEXT_PADDING, Y_AXIS_PADDING+TEXT_PADDING+yCenteringPadding, this.getWidth()-Y_AXIS_PADDING-TEXT_PADDING, this.getWidth()-Y_AXIS_PADDING-TEXT_PADDING+yCenteringPadding);
         for(Bar bar: bars){
             paint.setColor(bar.getC());
             canvas.drawArc(oval, 0,(float) (bar.getPercent()*NUM_DEGREES), true, paint);
         }
+
+        //canvas.drawA
+
 
 
     }
@@ -156,26 +167,31 @@ public class DraggablePieChart extends View{
 
             case MotionEvent.ACTION_MOVE: // touch drag with the marker
 
-                if(barSelected!=-1 && barSelected!=0){
+                if(barSelected!=-1 && barSelected!=0 ){
                     double angle =Math.atan(((double)Y-centerY)/(X-centerX))*180/Math.PI;
                     System.out.println("The angle: " + angle);
                     System.out.println(X-centerX + "  " + (Y-centerY));
                     Bar cBar = bars.get(barSelected);
 
-                    //Determining which quadrant the angle is in
-                    if( X-centerX>0 && (Y-centerY)>0){
-                        cBar.setPercent(angle/360);
+                    double barBeforeAngle = 0;
+                    if(barSelected!=bars.size()-1) barBeforeAngle=bars.get(barSelected+1).getPercent();
+
+
+                    if(true){
+                    //if(angle-barBeforeAngle>((float)CUR_BAR_TAB_WIDTH)/NUM_DEGREES) {
+                    //if(angle-CUR_BAR_TAB_WIDTH>((float)CUR_BAR_TAB_WIDTH)/NUM_DEGREES    && ) {
+                        //Determining which quadrant the angle is in
+                        if (angle-CUR_BAR_TAB_WIDTH>((float)CUR_BAR_TAB_WIDTH)/NUM_DEGREES  && X - centerX > 0 && (Y - centerY) > 0) {
+                            cBar.setPercent(angle / 360);
+                        } else if (X - centerX < 0 && (Y - centerY) > 0) {
+                            cBar.setPercent(.5 + (angle / 360));
+                        } else if (X - centerX < 0 && (Y - centerY) < 0) {
+                            cBar.setPercent(.5 + (angle / 360));
+                        } else if (X - centerX > 0 && (Y - centerY) < 0) {
+                            cBar.setPercent(1 + (angle / 360));
+                        }
+                        System.out.println("Percentage: " + cBar.getPercent());
                     }
-                    else if(X-centerX<0 && (Y-centerY)>0){
-                        cBar.setPercent(.5+(angle/360));
-                    }
-                    else if(X-centerX<0 && (Y-centerY)<0){
-                        cBar.setPercent(.5+(angle/360));
-                    }
-                    else if(X-centerX>0 && (Y-centerY)<0){
-                        cBar.setPercent(1+(angle/360));
-                    }
-                    System.out.println("Percentage: " + cBar.getPercent());
                 }
 
                 break;
@@ -219,6 +235,7 @@ public class DraggablePieChart extends View{
 
     public void setBarSelected(int pos){
         this.barSelected=pos;
+        invalidate();
     }
 
 
