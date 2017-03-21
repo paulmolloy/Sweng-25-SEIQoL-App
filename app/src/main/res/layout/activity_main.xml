@@ -29,8 +29,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/draw_b"
             />
+
+            <!--android:text="bar chart: MP-Android-Chart lib"-->
         <Button
-            android:text="bar chart: MP-Android-Chart lib"
+            android:text="CSV stuff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lib_b"

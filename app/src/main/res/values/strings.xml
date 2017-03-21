@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">SEIQoL-App</string>
     <string name="title_activity_rect_draw">RectDraw</string>
+    <string name="edit_message">Enter a respondent ID</string>
+    <string name="button_send">Start</string>
+    <string name="help_text">Here</string>
 </resources>

@@ -27,5 +27,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     compile 'com.android.support:design:25.1.0'
+    compile files('libs/opencsv-3.9.jar')
     testCompile 'junit:junit:4.12'
 }

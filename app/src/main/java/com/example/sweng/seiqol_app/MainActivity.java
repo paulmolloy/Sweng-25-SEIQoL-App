@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button drawViewB = (Button) findViewById(R.id.draw_b);
         drawViewB.setOnClickListener(this);
 
-        j = new Intent(MainActivity.this, BarChartFromLibrary.class);
+        j = new Intent(MainActivity.this, CSVTesting.class);
         Button libBarChartB = (Button) findViewById(R.id.lib_b);
         libBarChartB.setOnClickListener(this);
 
