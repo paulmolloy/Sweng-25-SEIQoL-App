@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Intent i,j,k;
+    Intent i,j,k,l;
     Button drawB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button drawPieB = (Button) findViewById(R.id.draw_pie_b);
         drawPieB.setOnClickListener(this);
 
+        l = new Intent(MainActivity.this, UserInput.class);
+        Button userInput = (Button) findViewById(R.id.getInput);
+        userInput.setOnClickListener(this);
 
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Instructions");
@@ -75,6 +78,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.draw_pie_b:
                 startActivity(k);
+                break;
+            case R.id.getInput:
+                startActivity(l);
                 break;
             default:
 
