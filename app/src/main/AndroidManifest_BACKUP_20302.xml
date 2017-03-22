@@ -23,8 +23,11 @@
         <activity android:name=".BarChartFromLibrary" />
         <activity android:name=".CSVTesting" />
         <activity android:name=".HelpScreen" />
+<<<<<<< HEAD
         <activity android:name=".Screen0EnterId"></activity>
+=======
         <activity android:name=".UserInput"></activity>
+>>>>>>> 0a65987571bfdc98051e821e9eda54eadba9e2e1
     </application>
 
 </manifest>

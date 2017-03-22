@@ -123,7 +123,7 @@ public class CSVTesting extends AppCompatActivity implements
         if(isExternalStorageWritable()==true) {
             Log.w("Its good.", "There's storage.");
 
-            
+
 
 
             //File myPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PODCASTS);
