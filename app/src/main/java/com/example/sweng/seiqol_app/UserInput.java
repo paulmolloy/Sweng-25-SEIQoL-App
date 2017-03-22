@@ -19,74 +19,37 @@ public class UserInput extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_input);
-        Button cb1 = (Button) findViewById(R.id.Confirm1);
-        Button cb2 = (Button) findViewById(R.id.Confirm2);
-        Button cb3 = (Button) findViewById(R.id.Confirm3);
-        Button cb4 = (Button) findViewById(R.id.Confirm4);
-        Button cb5 = (Button) findViewById(R.id.Confirm5);
-
-        cb1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText et = (EditText)findViewById(R.id.FirstArea);
-                // TextView tv1 = (TextView) findViewById(R.id.textView);
-                // tv1.setText(et1.getText().toString());
-                area1 = et.getText().toString();
-                et.setEnabled(false);
-            }
-        });
-        cb2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText et = (EditText)findViewById(R.id.SecondArea);
-                // TextView tv1 = (TextView) findViewById(R.id.textView);
-                // tv1.setText(et1.getText().toString());
-                area2 = et.getText().toString();
-                et.setEnabled(false);
-            }
-        });
-        cb3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText et = (EditText)findViewById(R.id.ThirdArea);
-                // TextView tv1 = (TextView) findViewById(R.id.textView);
-                // tv1.setText(et1.getText().toString());
-                area3 = et.getText().toString();
-                et.setEnabled(false);
-            }
-        });
-        cb4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText et = (EditText)findViewById(R.id.FourthArea);
-                // TextView tv1 = (TextView) findViewById(R.id.textView);
-                // tv1.setText(et1.getText().toString());
-                area4 = et.getText().toString();
-                et.setEnabled(false);
-            }
-        });
-        cb5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText et = (EditText)findViewById(R.id.FifthArea);
-                // TextView tv1 = (TextView) findViewById(R.id.textView);
-                // tv1.setText(et1.getText().toString());
-                area5 = et.getText().toString();
-                et.setEnabled(false);
-            }
-        });
 
 
         Button next = (Button) findViewById(R.id.Next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText et = (EditText)findViewById(R.id.FirstArea);
+                area1 = et.getText().toString();
+                et = (EditText)findViewById(R.id.SecondArea);
+                area2 = et.getText().toString();
+                et = (EditText)findViewById(R.id.ThirdArea);
+                area3 = et.getText().toString();
+                et = (EditText)findViewById(R.id.FourthArea);
+                area4 = et.getText().toString();
+                et = (EditText)findViewById(R.id.FifthArea);
+                area5 = et.getText().toString();
                 i = new Intent(UserInput.this, RectTesting.class);
                 i.putExtra("AREA1", area1);
                 i.putExtra("AREA2", area2);
                 i.putExtra("AREA3", area3);
                 i.putExtra("AREA4", area4);
                 i.putExtra("AREA5", area5);
+                startActivity(i);
+            }
+        });
+
+        Button back = (Button) findViewById(R.id.Back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i = new Intent(UserInput.this, MainActivity.class);
                 startActivity(i);
             }
         });

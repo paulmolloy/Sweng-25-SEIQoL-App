@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/Back"
                 android:textSize="10sp"
-                tools:layout_editor_absoluteY="160dp"
+                tools:layout_editor_absoluteY="241dp"
                 tools:layout_editor_absoluteX="29dp" />
         </android.support.constraint.ConstraintLayout>
 
@@ -56,40 +56,59 @@
             android:layout_marginLeft="16dp"
             android:id="@+id/Input"
             app:layout_constraintVertical_bias="0.51"
-            android:layout_marginTop="150dp">
+            android:layout_marginTop="112dp">
 
-            <Button
-                android:text="Confirm"
+            <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:id="@+id/Confirm3"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/description2"
+                android:hint="Enter description here"
                 android:textSize="10sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/ThirdArea"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintBaseline_toBaselineOf="@+id/SecondArea"
+                app:layout_constraintLeft_toRightOf="@+id/SecondArea"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/description3"
+                android:hint="Enter description here"
+                android:textSize="10sp"
+                app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/ThirdArea"
-                app:layout_constraintHorizontal_bias="0.2" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/ThirdArea" />
 
-            <Button
-                android:text="Confirm"
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/Confirm5"
-                app:layout_constraintLeft_toRightOf="@+id/FifthArea"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBaseline_toBaselineOf="@+id/FifthArea"
-                app:layout_constraintHorizontal_bias="0.2"
-                android:textSize="10sp" />
-
-            <Button
-                android:text="Confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Confirm4"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/description4"
+                android:hint="Enter description here"
+                android:textSize="10sp"
+                app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/FourthArea"
-                app:layout_constraintBaseline_toBaselineOf="@+id/FourthArea"
-                app:layout_constraintHorizontal_bias="0.2"
-                android:textSize="10sp" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/FourthArea" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/description5"
+                android:hint="Enter description here"
+                android:textSize="10sp"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/FifthArea"
+                app:layout_constraintBaseline_toBaselineOf="@+id/FifthArea" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -120,17 +139,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/FourthArea"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
-            <Button
-                android:text="Confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:id="@+id/Confirm2"
-                android:textSize="10sp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/SecondArea"
-                app:layout_constraintHorizontal_bias="0.2"
-                app:layout_constraintBaseline_toBaselineOf="@+id/SecondArea" />
-
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -159,17 +167,6 @@
                 android:layout_marginTop="30dp"
                 app:layout_constraintTop_toBottomOf="@+id/FirstArea" />
 
-            <Button
-                android:text="Confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:id="@+id/Confirm1"
-                android:textSize="10sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/FirstArea"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/FirstArea"
-                app:layout_constraintHorizontal_bias="0.2" />
-
             <EditText
                 android:layout_width="wrap_content"
                 android:inputType="textPersonName"
@@ -183,6 +180,19 @@
                 android:textColor="@android:color/black"
                 android:hint="Enter area here"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/description1"
+                android:hint="Enter description here"
+                android:textSize="10sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/FirstArea"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintBaseline_toBaselineOf="@+id/FirstArea" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
