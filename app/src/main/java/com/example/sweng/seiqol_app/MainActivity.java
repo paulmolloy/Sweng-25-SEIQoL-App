@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button drawPieB = (Button) findViewById(R.id.draw_pie_b);
         drawPieB.setOnClickListener(this);
 
-        l = new Intent(MainActivity.this, UserInput.class);
+        l = new Intent(MainActivity.this, Screen0EnterId.class);
         Button userInput = (Button) findViewById(R.id.getInput);
         userInput.setOnClickListener(this);
 

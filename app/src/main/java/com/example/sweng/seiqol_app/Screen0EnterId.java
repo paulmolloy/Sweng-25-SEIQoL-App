@@ -1,16 +1,48 @@
 package com.example.sweng.seiqol_app;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class Screen0EnterId extends AppCompatActivity {
 
+    String area1;
+    Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen0_enter_id);
+
+        Button next = (Button) findViewById(R.id.next_0);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText et = (EditText)findViewById(R.id.respondant_id_et);
+                area1 = et.getText().toString();
+                i = new Intent(Screen0EnterId.this, UserInput.class);
+                i.putExtra("AREA1", area1);
+
+                startActivity(i);
+            }
+        });
+
+        Button back = (Button) findViewById(R.id.back_0);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText et = (EditText)findViewById(R.id.respondant_id_et);
+                area1 = et.getText().toString();
+                i = new Intent(Screen0EnterId.this, MainActivity.class);
+                i.putExtra("AREA1", area1);
+                startActivity(i);
+            }
+        });
+
 
 
 
@@ -36,4 +68,7 @@ public class Screen0EnterId extends AppCompatActivity {
                 });
         alertDialog.show();
     }
+
+
+
 }
