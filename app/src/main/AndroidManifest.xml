@@ -10,21 +10,32 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".MainActivity" android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RectTesting" />
-        <activity android:name=".PieTesting" />
-        <activity android:name=".BarChartFromLibrary" />
-        <activity android:name=".CSVTesting" />
-        <activity android:name=".HelpScreen" />
-        <activity android:name=".Screen0EnterId"></activity>
-        <activity android:name=".UserInput"></activity>
+        <activity android:name=".RectTesting" android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PieTesting" android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BarChartFromLibrary" android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CSVTesting" android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HelpScreen" android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Screen0EnterId" android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".UserInput" android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
