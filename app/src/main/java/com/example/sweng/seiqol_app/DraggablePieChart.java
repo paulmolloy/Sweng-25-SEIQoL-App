@@ -24,7 +24,7 @@ public class DraggablePieChart extends View{
     public static final int Y_AXIS_PADDING = 50;
     public static final int TEXT_PADDING = 20;
     public static final int NUM_DEGREES = 360;
-    public static final int MARKER_INTERVAL = 20;
+    public static final int MARKER_INTERVAL = 10;
     public static final int MARKER_TEXT_PADDING = 5;
     public static final int MARKER_TEXT_SIZE = 30;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
@@ -119,11 +119,11 @@ public class DraggablePieChart extends View{
         mPaintText.setColor(Color.BLACK);
         mPaintText.setTextSize(MARKER_TEXT_SIZE);
 
-        for(int i=0;i<NUM_DEGREES;i+=MARKER_INTERVAL){
+        for(int i=0;i<100;i+=MARKER_INTERVAL){
             mArc = new Path();
-            mArc.addArc(outerOval, i, i+MARKER_TEXT_PADDING);
+            mArc.addArc(outerOval, ((float)i/100)*NUM_DEGREES, i+MARKER_TEXT_PADDING);
             canvas.drawTextOnPath(Integer.toString(i), mArc, 0, -TEXT_PADDING, mPaintText);
-            canvas.drawArc(outerOval, i,(float) (1), true, mPaintText);
+            canvas.drawArc(outerOval, ((float)i/100)*NUM_DEGREES,(float) (1), true, mPaintText);
         }
 
         mPaintText.setColor(Color.WHITE);
