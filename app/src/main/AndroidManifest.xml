@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sweng.seiqol_app">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -22,9 +22,8 @@
         <activity android:name=".PieTesting" />
         <activity android:name=".BarChartFromLibrary" />
         <activity android:name=".CSVTesting" />
-        <activity android:name=".HelpScreen"></activity>
-
-
+        <activity android:name=".HelpScreen" />
+        <activity android:name=".Screen0EnterId"></activity>
     </application>
 
 </manifest>
