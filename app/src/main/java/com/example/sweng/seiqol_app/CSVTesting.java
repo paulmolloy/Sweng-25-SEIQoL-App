@@ -16,6 +16,7 @@ package com.example.sweng.seiqol_app;
         import android.view.MotionEvent;
         import android.view.View;
         import android.widget.EditText;
+        import android.widget.Toast;
 
         import com.opencsv.CSVWriter;
 
@@ -160,6 +161,23 @@ public class CSVTesting extends AppCompatActivity implements
         }else{
             Log.w("ExternalStorage", "no external storage available.");
         }
+
+
+        Intent mailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:molloyp1@tcd.ie"));
+        //mailIntent.setType("text/plain");
+        mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"molloyp1@tcd.ie"});
+        mailIntent.putExtra(Intent.EXTRA_SUBJECT, "subject here");
+        mailIntent.putExtra(Intent.EXTRA_TEXT, "body text");
+        File root = Environment.getExternalStorageDirectory();
+        File file = new File(Environment.getExternalStorageDirectory() + File.separator + "MyApp", message+".csv");
+        if (!file.exists() || !file.canRead()) {
+            Toast.makeText(this, "Attachment Error", Toast.LENGTH_SHORT).show();
+            finish();
+            //return;
+        }
+        Uri uri = Uri.parse("file://" + file);
+        mailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        startActivity(Intent.createChooser(mailIntent, "Send email..."));
         startActivity(intent);
     }
 
