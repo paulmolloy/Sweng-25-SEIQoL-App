@@ -47,32 +47,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton0"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:buttonTint="#dcbd0d"/>
 
             <RadioButton
                 android:text="Seg1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton1"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:buttonTint="#909baf"/>
             <RadioButton
                 android:text="Seg2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton2"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:buttonTint="#de571d"/>
             <RadioButton
                 android:text="Seg3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton3"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:buttonTint="#7f628e"/>
             <RadioButton
                 android:text="Seg4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton4"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:buttonTint="#308754"/>
         </RadioGroup>
 
     </LinearLayout>
