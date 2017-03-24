@@ -29,11 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="10"
-            android:id="@+id/interviewer_id_et"
-            android:hint="Enter Interviewer Id"
-            />
+            android:id="@+id/interviewer_id_et" />
 
         <EditText
             android:layout_width="match_parent"
@@ -60,18 +57,10 @@
 
 
             <Button
-                android:text="Back"
+                android:text="Begin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/back_0"
-                android:layout_weight="1" />
-
-
-            <Button
-                android:text="Next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/next_0"
+                android:id="@+id/begin_0"
                 android:layout_weight="1" />
         </LinearLayout>
 

@@ -1,18 +1,24 @@
 package com.example.sweng.seiqol_app;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class PieTesting extends AppCompatActivity {
     TextView myTv;
     DraggablePieChart myDView;
     RadioGroup rGroup;
-    private RadioButton rb0, rb1, rb2,rb3,rb4;
+    ArrayList<String> data = new ArrayList<>();
+    Intent i;
 
 
     @Override
@@ -24,7 +30,21 @@ public class PieTesting extends AppCompatActivity {
         rGroup = (RadioGroup) findViewById(R.id.rBG0);
         rGroup.check(R.id.radioButton2);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            data = extras.getStringArrayList("DATA");
+        }
 
+        TextView tv = (TextView) findViewById(R.id.radioButton0);
+        tv.setText(data.get(3));
+        tv = (TextView) findViewById(R.id.radioButton1);
+        tv.setText(data.get(4));
+        tv = (TextView) findViewById(R.id.radioButton2);
+        tv.setText(data.get(5));
+        tv = (TextView) findViewById(R.id.radioButton3);
+        tv.setText(data.get(6));
+        tv = (TextView) findViewById(R.id.radioButton4);
+        tv.setText(data.get(7));
 
         rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -48,7 +68,6 @@ public class PieTesting extends AppCompatActivity {
                             myDView.setBarSelected(4);
                         break;
                 }
-
 
             }
         });

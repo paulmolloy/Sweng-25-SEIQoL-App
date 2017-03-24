@@ -1,20 +1,24 @@
 package com.example.sweng.seiqol_app;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class RectTesting extends AppCompatActivity {
     TextView myTv;
     DraggableBarChart myDView;
     RadioGroup rGroup;
-    private RadioButton rb0, rb1, rb2,rb3,rb4;
-    String area1, area2, area3, area4, area5;
+    ArrayList<String> data = new ArrayList<>();
+    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,22 +31,18 @@ public class RectTesting extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            area1 = extras.getString("AREA1");
-            area2 = extras.getString("AREA2");
-            area3 = extras.getString("AREA3");
-            area4 = extras.getString("AREA4");
-            area5 = extras.getString("AREA5");
+            data = extras.getStringArrayList("DATA");
         }
-        TextView tv1 = (TextView) findViewById(R.id.radioButton0);
-        tv1.setText(area1);
-        TextView tv2 = (TextView) findViewById(R.id.radioButton1);
-        tv2.setText(area2);
-        TextView tv3 = (TextView) findViewById(R.id.radioButton2);
-        tv3.setText(area3);
-        TextView tv4 = (TextView) findViewById(R.id.radioButton3);
-        tv4.setText(area4);
-        TextView tv5 = (TextView) findViewById(R.id.radioButton4);
-        tv5.setText(area5);
+        TextView tv = (TextView) findViewById(R.id.radioButton0);
+        tv.setText(data.get(3));
+        tv = (TextView) findViewById(R.id.radioButton1);
+        tv.setText(data.get(4));
+        tv = (TextView) findViewById(R.id.radioButton2);
+        tv.setText(data.get(5));
+        tv = (TextView) findViewById(R.id.radioButton3);
+        tv.setText(data.get(6));
+        tv = (TextView) findViewById(R.id.radioButton4);
+        tv.setText(data.get(7));
 
 
         rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -68,7 +68,30 @@ public class RectTesting extends AppCompatActivity {
                         break;
                 }
 
+                Button next = (Button) findViewById(R.id.next_2);
+                next.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        double[] temp = myDView.getAllBarValues();
+                        data.add(8, Double.toString(temp[0]));
+                        data.add(9, Double.toString(temp[1]));
+                        data.add(10, Double.toString(temp[2]));
+                        data.add(11, Double.toString(temp[3]));
+                        data.add(12, Double.toString(temp[4]));
+                        i = new Intent(RectTesting.this, PieTesting.class);
+                        i.putExtra("DATA", data);
+                        startActivity(i);
+                    }
+                });
 
+                Button back = (Button) findViewById(R.id.back_2);
+                back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        i = new Intent(RectTesting.this, Screen2SampleBar.class);
+                        startActivity(i);
+                    }
+                });
             }
         });
 
