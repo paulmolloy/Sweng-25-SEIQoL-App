@@ -44,14 +44,20 @@
             android:layout_height="wrap_content"
             android:id="@+id/draw_pie_b"
             />
+        <Button
+            android:text="Interviewer Record test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/interviewer_record_b"
+            />
+
 
         <Button
-            android:text="User input"
+            android:text="Beginning of Survey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/getInput"
             />
-
 
         <TextView
             android:text="I'm leaving this bar chart stuff in different activities untill I get it working better "

@@ -52,19 +52,19 @@ public class RectTesting extends AppCompatActivity {
                 // Check which radio button was clicked
                 switch(checkedId) {
                     case R.id.radioButton0:
-                            myDView.setBarSelected(0);
+                        myDView.setBarSelected(0);
                         break;
                     case R.id.radioButton1:
-                            myDView.setBarSelected(1);
+                        myDView.setBarSelected(1);
                         break;
                     case R.id.radioButton2:
-                            myDView.setBarSelected(2);
+                        myDView.setBarSelected(2);
                         break;
                     case R.id.radioButton3:
-                            myDView.setBarSelected(3);
+                        myDView.setBarSelected(3);
                         break;
                     default :
-                            myDView.setBarSelected(4);
+                        myDView.setBarSelected(4);
                         break;
                 }
 
