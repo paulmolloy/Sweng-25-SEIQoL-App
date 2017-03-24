@@ -18,7 +18,7 @@ public class UserInput extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_input);
+        setContentView(R.layout.activity_screen1_cues);
 
 
         Button next = (Button) findViewById(R.id.Next);

@@ -43,7 +43,7 @@
             >
 
             <RadioButton
-                android:text="Bar 0"
+                android:text="School"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton0"
@@ -51,28 +51,28 @@
                 android:buttonTint="#dcbd0d"/>
 
             <RadioButton
-                android:text="Bar 1"
+                android:text="Work"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton1"
                 android:layout_weight="1"
                 android:buttonTint="#909baf"/>
             <RadioButton
-                android:text="Bar 2"
+                android:text="Soccer"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton2"
                 android:layout_weight="1"
                 android:buttonTint="#de571d"/>
             <RadioButton
-                android:text="Bar 3"
+                android:text="Friends"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton3"
                 android:layout_weight="1"
                 android:buttonTint="#7f628e"/>
             <RadioButton
-                android:text="Bar 4"
+                android:text="Family"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton4"
@@ -97,7 +97,7 @@
                 android:text="Back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/back_0"
+                android:id="@+id/back_2"
                 android:layout_weight="1" />
 
 
@@ -105,7 +105,7 @@
                 android:text="Next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/next_0"
+                android:id="@+id/next_2"
                 android:layout_weight="1" />
         </LinearLayout>
 
