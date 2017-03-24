@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -28,7 +29,6 @@ public class RectTesting extends AppCompatActivity {
         myDView = (DraggableBarChart) findViewById(R.id.dView);
         rGroup = (RadioGroup) findViewById(R.id.rBG0);
         rGroup.check(R.id.radioButton2);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
@@ -50,6 +50,9 @@ public class RectTesting extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // find which radio button is selected
                 // Check which radio button was clicked
+                //for(int i=0;i<10;i++)System.out.println("!!!!!!!!!!!!!!!is this visible!!!!!!!");
+
+
                 switch(checkedId) {
                     case R.id.radioButton0:
                         myDView.setBarSelected(0);
@@ -68,33 +71,35 @@ public class RectTesting extends AppCompatActivity {
                         break;
                 }
 
-                Button next = (Button) findViewById(R.id.next_2);
-                next.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        double[] temp = myDView.getAllBarValues();
-                        data.add(8, Double.toString(temp[0]));
-                        data.add(9, Double.toString(temp[1]));
-                        data.add(10, Double.toString(temp[2]));
-                        data.add(11, Double.toString(temp[3]));
-                        data.add(12, Double.toString(temp[4]));
-                        i = new Intent(RectTesting.this, PieTesting.class);
-                        i.putExtra("DATA", data);
-                        startActivity(i);
-                    }
-                });
 
-                Button back = (Button) findViewById(R.id.back_2);
-                back.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        i = new Intent(RectTesting.this, Screen2SampleBar.class);
-                        startActivity(i);
-                    }
-                });
+            }
+        });
+        Button next = (Button) findViewById(R.id.next_2);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                double[] temp = myDView.getAllBarValues();
+                data.add(8, Double.toString(temp[0]));
+                data.add(9, Double.toString(temp[1]));
+                data.add(10, Double.toString(temp[2]));
+                data.add(11, Double.toString(temp[3]));
+                data.add(12, Double.toString(temp[4]));
+                i = new Intent(RectTesting.this, PieTesting.class);
+                i.putExtra("DATA", data);
+                startActivity(i);
             }
         });
 
+        Button back = (Button) findViewById(R.id.back_2);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                i = new Intent(RectTesting.this, Screen2SampleBar.class);
+                startActivity(i);
+            }
+        });
 
         AlertDialog alertDialog = new AlertDialog.Builder(RectTesting.this).create();
         alertDialog.setTitle("Instructions");
@@ -116,5 +121,7 @@ public class RectTesting extends AppCompatActivity {
                 });
 
         alertDialog.show();
+        for(int i=0;i<10;i++) Log.e("RectTesting", "!!!!!!!!!!!!index=" + i);
+
     }
 }
