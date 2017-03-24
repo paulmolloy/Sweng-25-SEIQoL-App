@@ -38,7 +38,7 @@
             android:orientation="horizontal"
             android:onClick="onRadioButtonClicked"
             android:id="@+id/rBG0"
-            android:layout_weight="1"
+            android:layout_weight="0.62"
 
             >
 
@@ -79,6 +79,33 @@
                 android:layout_weight="1"
                 android:buttonTint="#308754"/>
         </RadioGroup>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center|bottom"
+            >
+
+
+            <Button
+                android:text="Back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/back_3"
+                android:layout_weight="1" />
+
+
+            <Button
+                android:text="Next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/next_3"
+                android:layout_weight="1" />
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>

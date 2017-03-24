@@ -7,13 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Screen7InterviewerRecord extends AppCompatActivity  {
-    String area1;
-    String area2;
-    String area3;
-    String area4;
-    String area5;
+    long time;
+    ArrayList<String> data = new ArrayList<>();
     Intent i;
     Intent j;
     RadioGroup underRGroup, boredomRGroup;
@@ -25,8 +26,17 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         boredomRGroup = (RadioGroup) findViewById(R.id.boredom_rbg);
         underRGroup.check(R.id.understanding_0_rb);
         underRGroup.check(R.id.boredom_0_rb);
+        Calendar calendar = Calendar.getInstance();
+        time = calendar.getTimeInMillis();
 
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            data = extras.getStringArrayList("DATA");
+        }
+        long startTime = Long.parseLong(data.get(0));
+        long totalTime = (time-startTime)/1000;
+        TextView tv = (TextView) findViewById(R.id.time_taken_tv);
+        tv.setText(Long.toString(totalTime));
         underRGroup.getCheckedRadioButtonId();
         boredomRGroup.getCheckedRadioButtonId();
         //Button next = (Button) findViewById(R.id.Next);

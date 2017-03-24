@@ -69,6 +69,33 @@ public class PieTesting extends AppCompatActivity {
                         break;
                 }
 
+                Button next = (Button) findViewById(R.id.next_3);
+                next.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        double[] temp = myDView.getAllBarValues();
+                        data.add(13, Double.toString(temp[0]));
+                        data.add(14, Double.toString(temp[1]));
+                        data.add(15, Double.toString(temp[2]));
+                        data.add(16, Double.toString(temp[3]));
+                        data.add(17 , Double.toString(temp[4]));
+                        i = new Intent(PieTesting.this, Screen7InterviewerRecord.class);
+                        i.putExtra("DATA", data);
+                        startActivity(i);
+                    }
+                });
+
+                Button back = (Button) findViewById(R.id.back_3 );
+                back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        i = new Intent(PieTesting.this, RectTesting.class);
+                        startActivity(i);
+                    }
+                });
+
             }
         });
 
