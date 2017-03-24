@@ -97,7 +97,7 @@
                 android:text="Back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/back_2"
+                android:id="@+id/back_1"
                 android:layout_weight="1" />
 
 
@@ -105,7 +105,7 @@
                 android:text="Next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/next_2"
+                android:id="@+id/next_1"
                 android:layout_weight="1" />
         </LinearLayout>
 

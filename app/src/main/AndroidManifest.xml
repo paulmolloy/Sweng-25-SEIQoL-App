@@ -33,6 +33,8 @@
         <activity android:name=".HelpScreen" android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity android:name=".Screen0EnterId" android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Screen2SampleBar" android:configChanges="orientation"
             android:screenOrientation="portrait">
 
 

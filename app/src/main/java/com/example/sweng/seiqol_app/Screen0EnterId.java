@@ -9,43 +9,38 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Screen0EnterId extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Calendar;
 
-    String area1,area2;
+public class Screen0EnterId extends AppCompatActivity {
+    ArrayList<String> data = new ArrayList<>();
+    String respondent,interviewer;
     Intent i;
+    long time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen0_enter_id);
 
-        Button next = (Button) findViewById(R.id.next_0);
-        next.setOnClickListener(new View.OnClickListener() {
+        Button begin = (Button) findViewById(R.id.begin_0);
+        begin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText et = (EditText)findViewById(R.id.respondant_id_et);
-                area1 = et.getText().toString();
+                respondent = et.getText().toString();
+                et = (EditText)findViewById(R.id.interviewer_id_et);
+                interviewer = et.getText().toString();
+                Calendar calendar = Calendar.getInstance();
+                time = calendar.getTimeInMillis();
+                data.add(0, respondent);
+                data.add(1, interviewer);
+                data.add(2, Long.toString(time));
                 i = new Intent(Screen0EnterId.this, UserInput.class);
-                i.putExtra("AREA1", area1);
+                i.putExtra("DATA", data);
 
                 startActivity(i);
             }
         });
-
-        Button back = (Button) findViewById(R.id.back_0);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText et = (EditText)findViewById(R.id.respondant_id_et);
-                EditText interviewer_et = (EditText)findViewById(R.id.interviewer_id_et);
-                area1 = et.getText().toString();
-                area2 = et.getText().toString();
-                i = new Intent(Screen0EnterId.this, MainActivity.class);
-                i.putExtra("AREA1", area1);
-                i.putExtra("AREA2", area2);
-                startActivity(i);
-            }
-        });
-
 
 
 

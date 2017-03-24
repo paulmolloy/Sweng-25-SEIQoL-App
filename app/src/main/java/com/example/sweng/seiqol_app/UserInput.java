@@ -7,49 +7,41 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class UserInput extends AppCompatActivity  {
-    String area1;
-    String area2;
-    String area3;
-    String area4;
-    String area5;
+    ArrayList<String> data = new ArrayList<>();
     Intent i;
-    Intent j;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen1_cues);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            data = extras.getStringArrayList("DATA");
+        }
 
-
-        Button next = (Button) findViewById(R.id.Next);
+        Button next = (Button) findViewById(R.id.next_0);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText et = (EditText)findViewById(R.id.FirstArea);
-                area1 = et.getText().toString();
-                et = (EditText)findViewById(R.id.SecondArea);
-                area2 = et.getText().toString();
-                et = (EditText)findViewById(R.id.ThirdArea);
-                area3 = et.getText().toString();
-                et = (EditText)findViewById(R.id.FourthArea);
-                area4 = et.getText().toString();
-                et = (EditText)findViewById(R.id.FifthArea);
-                area5 = et.getText().toString();
-                i = new Intent(UserInput.this, RectTesting.class);
-                i.putExtra("AREA1", area1);
-                i.putExtra("AREA2", area2);
-                i.putExtra("AREA3", area3);
-                i.putExtra("AREA4", area4);
-                i.putExtra("AREA5", area5);
+                data.add(3, ((EditText)findViewById(R.id.FirstArea)).getText().toString());
+                data.add(4, ((EditText)findViewById(R.id.SecondArea)).getText().toString());
+                data.add(5, ((EditText)findViewById(R.id.ThirdArea)).getText().toString());
+                data.add(6, ((EditText)findViewById(R.id.FourthArea)).getText().toString());
+                data.add(7, ((EditText)findViewById(R.id.FifthArea)).getText().toString());
+
+                i = new Intent(UserInput.this, Screen2SampleBar.class);
+                i.putExtra("DATA", data);
                 startActivity(i);
             }
         });
 
-        Button back = (Button) findViewById(R.id.Back);
+        Button back = (Button) findViewById(R.id.back_0);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = new Intent(UserInput.this, MainActivity.class);
+                i = new Intent(UserInput.this, Screen0EnterId.class);
                 startActivity(i);
             }
         });

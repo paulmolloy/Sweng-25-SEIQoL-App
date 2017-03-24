@@ -12,14 +12,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class Screen2SampleBar extends AppCompatActivity {
     TextView myTv;
     DraggableBarChart myDView;
     RadioGroup rGroup;
-    private RadioButton rb0, rb1, rb2,rb3,rb4;
-    String area1, area2, area3, area4, area5;
-    Intent i;
 
+    Intent i;
+    ArrayList<String> data = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,10 @@ public class Screen2SampleBar extends AppCompatActivity {
         myDView = (DraggableBarChart) findViewById(R.id.dView);
         rGroup = (RadioGroup) findViewById(R.id.rBG0);
         rGroup.check(R.id.radioButton2);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            data = extras.getStringArrayList("DATA");
+        }
 
 
 
@@ -54,39 +58,29 @@ public class Screen2SampleBar extends AppCompatActivity {
                             myDView.setBarSelected(4);
                         break;
                 }
-
-
             }
         });
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
 
-        }
 
-        Button next = (Button) findViewById(R.id.next_2);
+        Button next = (Button) findViewById(R.id.next_1);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText et = (EditText)findViewById(R.id.FirstArea);
-                area1 = et.getText().toString();
-                et = (EditText)findViewById(R.id.SecondArea);
-                area2 = et.getText().toString();
-                et = (EditText)findViewById(R.id.ThirdArea);
-                area3 = et.getText().toString();
-                et = (EditText)findViewById(R.id.FourthArea);
-                area4 = et.getText().toString();
-                et = (EditText)findViewById(R.id.FifthArea);
-                area5 = et.getText().toString();
+
                 i = new Intent(Screen2SampleBar.this, RectTesting.class);
-                i.putExtra("AREA1", area1);
-                i.putExtra("AREA2", area2);
-                i.putExtra("AREA3", area3);
-                i.putExtra("AREA4", area4);
-                i.putExtra("AREA5", area5);
+                i.putExtra("DATA", data);
                 startActivity(i);
             }
         });
 
+        Button back = (Button) findViewById(R.id.back_1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i = new Intent(Screen2SampleBar.this, UserInput.class);
+                startActivity(i);
+            }
+        });
 
         AlertDialog alertDialog = new AlertDialog.Builder(Screen2SampleBar.this).create();
         alertDialog.setTitle("Instructions");
