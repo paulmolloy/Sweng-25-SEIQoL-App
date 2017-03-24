@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 public class Screen0EnterId extends AppCompatActivity {
 
-    String area1;
+    String area1,area2;
     Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,12 @@ public class Screen0EnterId extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText et = (EditText)findViewById(R.id.respondant_id_et);
+                EditText interviewer_et = (EditText)findViewById(R.id.interviewer_id_et);
                 area1 = et.getText().toString();
+                area2 = et.getText().toString();
                 i = new Intent(Screen0EnterId.this, MainActivity.class);
                 i.putExtra("AREA1", area1);
+                i.putExtra("AREA2", area2);
                 startActivity(i);
             }
         });
