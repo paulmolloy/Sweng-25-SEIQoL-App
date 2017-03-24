@@ -31,6 +31,30 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         boredomRGroup.getCheckedRadioButtonId();
         //Button next = (Button) findViewById(R.id.Next);
 
+        Button next = (Button) findViewById(R.id.next_7);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                i = new Intent(Screen7InterviewerRecord.this, MainActivity.class);
+
+                startActivity(i);
+            }
+        });
+
+        Button back = (Button) findViewById(R.id.back_7);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                i = new Intent(Screen7InterviewerRecord.this, MainActivity.class);
+
+                startActivity(j);
+            }
+        });
+
 
 
     }
