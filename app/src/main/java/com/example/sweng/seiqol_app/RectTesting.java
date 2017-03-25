@@ -121,7 +121,6 @@ public class RectTesting extends AppCompatActivity {
                 });
 
         alertDialog.show();
-        for(int i=0;i<10;i++) Log.e("RectTesting", "!!!!!!!!!!!!index=" + i);
 
     }
 }
