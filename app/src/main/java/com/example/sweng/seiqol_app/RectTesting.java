@@ -103,15 +103,12 @@ public class RectTesting extends AppCompatActivity {
 
         AlertDialog alertDialog = new AlertDialog.Builder(RectTesting.this).create();
         alertDialog.setTitle("Instructions");
-        alertDialog.setMessage("Now that you have named the five most important areas in your life, I am\n" +
-                "going to ask you to rate how each of these areas are for you at the moment.\n" +
-                "First I will show you an example of how the rating is done\n" +
-                "First look at this box (indicate). As you can see, there are spaces at the\n" +
-                "bottom in which I can write the five important areas of my life (indicate), and\n" +
-                "there is a scale along the left hand side (indicate). The scale ranges from\n" +
-                "‘worst possible’ on the bottom to ‘best possible’ on the top, and passes\n" +
-                "through levels such as ‘very bad’ – ‘bad’ – ‘neither good nor bad’ – ‘good’ –\n" +
-                "and ‘very good’ between the two extremes."
+        alertDialog.setMessage("Now I want you to rate the five most important areas of your life, as you see\n" +
+                "presented here (indicate). Firstly, draw a bar which represents how you\n" +
+                "would rate yourself on each of these areas at the moment. As in the example\n" +
+                "I’ve just shown you, the nearer you draw the bar to the bottom line, the\n" +
+                "poorer you are rating that area of your life and the nearer you draw it to the\n" +
+                "top, the better your rating of that area of your life."
         );
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
@@ -121,7 +118,6 @@ public class RectTesting extends AppCompatActivity {
                 });
 
         alertDialog.show();
-        for(int i=0;i<10;i++) Log.e("RectTesting", "!!!!!!!!!!!!index=" + i);
 
     }
 }

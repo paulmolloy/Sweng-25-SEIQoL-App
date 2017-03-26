@@ -173,25 +173,34 @@ public class DraggablePieChart extends View{
                     System.out.println(X-centerX + "  " + (Y-centerY));
                     Bar cBar = bars.get(barSelected);
 
-                    double barBeforeAngle = 0;
-                    if(barSelected!=bars.size()-1) barBeforeAngle=bars.get(barSelected+1).getPercent();
+                    double barBeforePercent = 0;
+                    if(barSelected!=bars.size()-1) barBeforePercent=bars.get(barSelected+1).getPercent();
+                    double barAfterPercent = 360;
+                    if(barSelected!=0) barAfterPercent=bars.get(barSelected-1).getPercent();
 
+                    //Determining which quadrant the angle is in
 
-                    if(true){
-                    //if(angle-barBeforeAngle>((float)CUR_BAR_TAB_WIDTH)/NUM_DEGREES) {
-                    //if(angle-CUR_BAR_TAB_WIDTH>((float)CUR_BAR_TAB_WIDTH)/NUM_DEGREES    && ) {
-                        //Determining which quadrant the angle is in
-                        if (angle-CUR_BAR_TAB_WIDTH>((float)CUR_BAR_TAB_WIDTH)/NUM_DEGREES  && X - centerX > 0 && (Y - centerY) > 0) {
-                            cBar.setPercent(angle / 360);
-                        } else if (X - centerX < 0 && (Y - centerY) > 0) {
-                            cBar.setPercent(.5 + (angle / 360));
-                        } else if (X - centerX < 0 && (Y - centerY) < 0) {
-                            cBar.setPercent(.5 + (angle / 360));
-                        } else if (X - centerX > 0 && (Y - centerY) < 0) {
-                            cBar.setPercent(1 + (angle / 360));
-                        }
-                        System.out.println("Percentage: " + cBar.getPercent());
+                    double percent = cBar.getPercent();
+                    if (angle-CUR_BAR_TAB_WIDTH>((float)CUR_BAR_TAB_WIDTH)/NUM_DEGREES  && X - centerX > 0 && (Y - centerY) > 0) {
+                        percent=(angle / 360);
+                    } else if (X - centerX < 0 && (Y - centerY) > 0) {
+                        percent=(.5 + (angle / 360));
+                    } else if (X - centerX < 0 && (Y - centerY) < 0) {
+                        percent=(.5 + (angle / 360));
+                    } else if (X - centerX > 0 && (Y - centerY) < 0) {
+                        percent=(1 + (angle / 360));
                     }
+
+                    //checks to prevent segments being covered completely by each other and getting negative values
+                    if(barBeforePercent>percent){
+                        cBar.setPercent(barBeforePercent);
+                    }else if(barAfterPercent<percent){
+                        cBar.setPercent(barAfterPercent);
+                    }else{
+                        cBar.setPercent(percent);
+                    }
+                    //System.out.println("Percentage: " + cBar.getPercent());
+
                 }
 
                 break;

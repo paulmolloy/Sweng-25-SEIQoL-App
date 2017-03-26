@@ -42,6 +42,20 @@ public class Screen0EnterId extends AppCompatActivity {
             }
         });
 
+
+
+
+        AlertDialog alertDialog = new AlertDialog.Builder(Screen0EnterId.this).create();
+        alertDialog.setTitle("Instructions");
+        alertDialog.setMessage("Please enter the name of the interviewer and then the ID of the respondant to begin the SEIQol evaluation."
+        );
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
 

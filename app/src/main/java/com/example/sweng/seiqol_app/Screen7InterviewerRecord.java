@@ -3,6 +3,7 @@ package com.example.sweng.seiqol_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,8 +34,10 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
         }
+
         long startTime = Long.parseLong(data.get(2));
         long totalTime = (time-startTime)/1000;
+        for(int i=0;i<data.size()-1;i++) Log.e("record", data.get(i));
         TextView tv = (TextView) findViewById(R.id.time_taken_tv);
         tv.setText(Long.toString(totalTime));
         underRGroup.getCheckedRadioButtonId();
@@ -46,20 +49,22 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
+                data.add(18, Integer.toString(underRGroup.getCheckedRadioButtonId()));
+                data.add(19, Integer.toString(boredomRGroup.getCheckedRadioButtonId()));
 
-                i = new Intent(Screen7InterviewerRecord.this, MainActivity.class);
-
+                i = new Intent(Screen7InterviewerRecord.this, Screen8Result.class);
+                i.putExtra("DATA", data);
                 startActivity(i);
             }
         });
 
         Button back = (Button) findViewById(R.id.back_7);
-        next.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                i = new Intent(Screen7InterviewerRecord.this, MainActivity.class);
+                j = new Intent(Screen7InterviewerRecord.this, PieTesting.class);
 
                 startActivity(j);
             }

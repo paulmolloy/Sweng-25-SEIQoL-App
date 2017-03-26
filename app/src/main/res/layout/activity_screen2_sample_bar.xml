@@ -17,6 +17,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
+        <TextView
+            android:text="Example bar-chart with sample cues. Not saved as part of survey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:textStyle="bold"
+            />
 
         <TextView
             android:text="Drag to increase size. Switch selected bar below."

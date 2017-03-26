@@ -69,33 +69,33 @@ public class PieTesting extends AppCompatActivity {
                         break;
                 }
 
-                Button next = (Button) findViewById(R.id.next_3);
-                next.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
 
-                        double[] temp = myDView.getAllBarValues();
-                        data.add(18, Double.toString(temp[0]));
-                        data.add(19, Double.toString(temp[1]));
-                        data.add(20, Double.toString(temp[2]));
-                        data.add(21, Double.toString(temp[3]));
-                        data.add(22 , Double.toString(temp[4]));
-                        i = new Intent(PieTesting.this, Screen7InterviewerRecord.class);
-                        i.putExtra("DATA", data);
-                        startActivity(i);
-                    }
-                });
+            }
+        });
 
-                Button back = (Button) findViewById(R.id.back_3 );
-                back.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+        Button next = (Button) findViewById(R.id.next_3);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double[] temp = myDView.getAllBarValues();
+                data.add(18, Double.toString(temp[0]));
+                data.add(19, Double.toString(temp[1]));
+                data.add(20, Double.toString(temp[2]));
+                data.add(21, Double.toString(temp[3]));
+                data.add(22 , Double.toString(temp[4]));
+                i = new Intent(PieTesting.this, Screen7InterviewerRecord.class);
+                i.putExtra("DATA", data);
+                startActivity(i);
+            }
+        });
 
-                        i = new Intent(PieTesting.this, RectTesting.class);
-                        startActivity(i);
-                    }
-                });
+        Button back = (Button) findViewById(R.id.back_3 );
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                i = new Intent(PieTesting.this, Screen7InterviewerRecord.class);
+                startActivity(i);
             }
         });
 
@@ -103,15 +103,25 @@ public class PieTesting extends AppCompatActivity {
 
         AlertDialog alertDialog = new AlertDialog.Builder(PieTesting.this).create();
         alertDialog.setTitle("Instructions");
-        alertDialog.setMessage("Now that you have named the five most important areas in your life, I am\n" +
-                "going to ask you to rate how each of these areas are for you at the moment.\n" +
-                "First I will show you an example of how the rating is done\n" +
-                "First look at this box (indicate). As you can see, there are spaces at the\n" +
-                "bottom in which I can write the five important areas of my life (indicate), and\n" +
-                "there is a scale along the left hand side (indicate). The scale ranges from\n" +
-                "‘worst possible’ on the bottom to ‘best possible’ on the top, and passes\n" +
-                "through levels such as ‘very bad’ – ‘bad’ – ‘neither good nor bad’ – ‘good’ –\n" +
-                "and ‘very good’ between the two extremes."
+        alertDialog.setMessage("I would like you to show me how important the five areas of life you have\n" +
+                "nominated area in relation to each other, by using this disk (indicate SEIQoL-\n" +
+                "DW). People often value some areas in life as more important than others.\n" +
+                "This disk allows you to show me how important each area in your life is by\n" +
+                "giving the more important areas a larger area of the disk, and the less\n" +
+                "important areas a smaller area of the disk. In my life, for example, X (name\n" +
+                "cue not already chosen by respondent) is about this important (manipulate disk so\n" +
+                "that X represents 30% of space available). X 2 however is less important than X,\n" +
+                "so it has only this much of the pie (manipulate disk so that X 2 represents 20% of\n" +
+                "the space available). X 3 on the other hand is more important than X, so it has\n" +
+                "this much of the pie (manipulate DWP so that X 3 represents 40% of space\n" +
+                "available). Finally, X 4 and X 5 are the least important areas of life for me, and\n" +
+                "I value them about the same (manipulate disk so that X 4 and X 5 represent 5% each\n" +
+                "of space available). Now thinking about the five areas of life you have\n" +
+                "mentioned (write the name of each cue along the cut edge of one of the 5 coloured\n" +
+                "disks with a non-permanent marker [disks may also be marked with stick-on ‘post-\n" +
+                "it’ labels indicating the cues if preferred]). I would like you to show me how\n" +
+                "important these areas are in relation to each other by moving the disks\n" +
+                "around until their relative size represents your view of their importance"
         );
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
