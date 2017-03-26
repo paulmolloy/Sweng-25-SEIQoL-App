@@ -27,19 +27,23 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         boredomRGroup = (RadioGroup) findViewById(R.id.boredom_rbg);
         underRGroup.check(R.id.understanding_0_rb);
         underRGroup.check(R.id.boredom_0_rb);
-        Calendar calendar = Calendar.getInstance();
-        time = calendar.getTimeInMillis();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
         }
 
+        Calendar calendar = Calendar.getInstance();
+        time = calendar.getTimeInMillis();
         long startTime = Long.parseLong(data.get(2));
         long totalTime = (time-startTime)/1000;
+        long mins = totalTime/60;
+        long seconds = totalTime % 60;
+        String timeString = Long.toString(mins) + " mins " + Long.toString(seconds) + " seconds";
+
         for(int i=0;i<data.size()-1;i++) Log.e("record", data.get(i));
         TextView tv = (TextView) findViewById(R.id.time_taken_tv);
-        tv.setText(Long.toString(totalTime));
+        tv.setText(timeString);
         underRGroup.getCheckedRadioButtonId();
         boredomRGroup.getCheckedRadioButtonId();
         //Button next = (Button) findViewById(R.id.Next);
@@ -65,7 +69,7 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
 
 
                 j = new Intent(Screen7InterviewerRecord.this, PieTesting.class);
-
+                i.putExtra("DATA", data);
                 startActivity(j);
             }
         });

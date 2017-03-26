@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/back_0"
                 android:textSize="10sp"
-                tools:layout_editor_absoluteY="403dp"
+                tools:layout_editor_absoluteY="484dp"
                 tools:layout_editor_absoluteX="29dp" />
         </android.support.constraint.ConstraintLayout>
 

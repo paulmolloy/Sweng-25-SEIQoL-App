@@ -22,11 +22,32 @@ public class UserInput extends AppCompatActivity  {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
-            data.add(3, "");
-            data.add(4, "");
-            data.add(5, "");
-            data.add(6, "");
-            data.add(7, "");
+            if(data.size()<4) {
+                data.add(3, "");
+                data.add(4, "");
+                data.add(5, "");
+                data.add(6, "");
+                data.add(7, "");
+            }
+            else
+            {
+                EditText et = (EditText)findViewById(R.id.FirstArea);
+                et.setText(data.get(8));
+                et = (EditText)findViewById(R.id.SecondArea);
+                et.setText(data.get(9));
+                et = (EditText)findViewById(R.id.ThirdArea);
+                et.setText(data.get(10));
+                et = (EditText)findViewById(R.id.FourthArea);
+                et.setText(data.get(11));
+                et = (EditText)findViewById(R.id.FifthArea);
+                et.setText(data.get(12));
+                desc0=data.get(3);
+                desc1=data.get(4);
+                desc2=data.get(5);
+                desc3=data.get(6);
+                desc4=data.get(7);
+
+            }
         }
 
 

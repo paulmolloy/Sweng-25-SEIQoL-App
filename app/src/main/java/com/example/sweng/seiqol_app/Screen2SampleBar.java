@@ -78,6 +78,7 @@ public class Screen2SampleBar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 i = new Intent(Screen2SampleBar.this, UserInput.class);
+                i.putExtra("DATA", data);
                 startActivity(i);
             }
         });

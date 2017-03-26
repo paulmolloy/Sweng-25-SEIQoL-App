@@ -95,6 +95,7 @@ public class PieTesting extends AppCompatActivity {
             public void onClick(View v) {
 
                 i = new Intent(PieTesting.this, Screen7InterviewerRecord.class);
+                i.putExtra("DATA", data);
                 startActivity(i);
             }
         });

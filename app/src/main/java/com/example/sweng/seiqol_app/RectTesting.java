@@ -97,6 +97,7 @@ public class RectTesting extends AppCompatActivity {
             public void onClick(View v) {
 
                 i = new Intent(RectTesting.this, Screen2SampleBar.class);
+                i.putExtra("DATA", data);
                 startActivity(i);
             }
         });
