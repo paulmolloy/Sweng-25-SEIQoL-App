@@ -36,15 +36,15 @@ public class PieTesting extends AppCompatActivity {
         }
 
         TextView tv = (TextView) findViewById(R.id.radioButton0);
-        tv.setText(data.get(3));
+        tv.setText(data.get(8));
         tv = (TextView) findViewById(R.id.radioButton1);
-        tv.setText(data.get(4));
+        tv.setText(data.get(9));
         tv = (TextView) findViewById(R.id.radioButton2);
-        tv.setText(data.get(5));
+        tv.setText(data.get(10));
         tv = (TextView) findViewById(R.id.radioButton3);
-        tv.setText(data.get(6));
+        tv.setText(data.get(11));
         tv = (TextView) findViewById(R.id.radioButton4);
-        tv.setText(data.get(7));
+        tv.setText(data.get(12));
 
         rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -75,11 +75,11 @@ public class PieTesting extends AppCompatActivity {
                     public void onClick(View v) {
 
                         double[] temp = myDView.getAllBarValues();
-                        data.add(13, Double.toString(temp[0]));
-                        data.add(14, Double.toString(temp[1]));
-                        data.add(15, Double.toString(temp[2]));
-                        data.add(16, Double.toString(temp[3]));
-                        data.add(17 , Double.toString(temp[4]));
+                        data.add(18, Double.toString(temp[0]));
+                        data.add(19, Double.toString(temp[1]));
+                        data.add(20, Double.toString(temp[2]));
+                        data.add(21, Double.toString(temp[3]));
+                        data.add(22 , Double.toString(temp[4]));
                         i = new Intent(PieTesting.this, Screen7InterviewerRecord.class);
                         i.putExtra("DATA", data);
                         startActivity(i);

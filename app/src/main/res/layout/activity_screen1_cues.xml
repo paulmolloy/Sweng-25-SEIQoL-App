@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/back_0"
                 android:textSize="10sp"
-                tools:layout_editor_absoluteY="322dp"
+                tools:layout_editor_absoluteY="403dp"
                 tools:layout_editor_absoluteX="29dp" />
         </android.support.constraint.ConstraintLayout>
 
@@ -57,58 +57,6 @@
             android:id="@+id/Input"
             app:layout_constraintVertical_bias="0.51"
             android:layout_marginTop="112dp">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/description2"
-                android:hint="Enter description here"
-                android:textSize="10sp"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintBaseline_toBaselineOf="@+id/SecondArea"
-                app:layout_constraintLeft_toRightOf="@+id/SecondArea"
-                app:layout_constraintRight_toRightOf="parent" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/description3"
-                android:hint="Enter description here"
-                android:textSize="10sp"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/ThirdArea"
-                app:layout_constraintBaseline_toBaselineOf="@+id/ThirdArea" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/description4"
-                android:hint="Enter description here"
-                android:textSize="10sp"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/FourthArea"
-                app:layout_constraintBaseline_toBaselineOf="@+id/FourthArea" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/description5"
-                android:hint="Enter description here"
-                android:textSize="10sp"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/FifthArea"
-                app:layout_constraintBaseline_toBaselineOf="@+id/FifthArea" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -181,18 +129,61 @@
                 android:hint="Enter area here"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
+            <Button
+                android:text="Description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:ems="10"
+                android:id="@+id/description0"
+                android:textSize="10sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/FirstArea"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toRightOf="@+id/FirstArea" />
+
+            <Button
+                android:text="Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/description4"
+                android:textSize="10sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/FifthArea"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toRightOf="@+id/FifthArea" />
+
+            <Button
+                android:text="Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/description2"
+                android:textSize="10sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/ThirdArea"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toRightOf="@+id/ThirdArea" />
+
+            <Button
+                android:text="Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/description3"
+                android:textSize="10sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/FourthArea"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toRightOf="@+id/FourthArea" />
+
+            <Button
+                android:text="Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/description1"
-                android:hint="Enter description here"
+                app:layout_constraintBaseline_toBaselineOf="@+id/SecondArea"
                 android:textSize="10sp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/FirstArea"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintBaseline_toBaselineOf="@+id/FirstArea" />
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toRightOf="@+id/SecondArea" />
+
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout

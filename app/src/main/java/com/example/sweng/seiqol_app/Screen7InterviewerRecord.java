@@ -33,7 +33,7 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
         }
-        long startTime = Long.parseLong(data.get(0));
+        long startTime = Long.parseLong(data.get(2));
         long totalTime = (time-startTime)/1000;
         TextView tv = (TextView) findViewById(R.id.time_taken_tv);
         tv.setText(Long.toString(totalTime));

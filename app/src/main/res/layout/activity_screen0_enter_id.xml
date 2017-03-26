@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/interviewer_id_et" />
+            android:id="@+id/interviewer_id_et"
+            android:hint="Interviewer name" />
 
         <EditText
             android:layout_width="match_parent"
