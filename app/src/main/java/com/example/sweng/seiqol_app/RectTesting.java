@@ -80,11 +80,11 @@ public class RectTesting extends AppCompatActivity {
             public void onClick(View v) {
 
                 double[] temp = myDView.getAllBarValues();
-                data.add(13, Double.toString(temp[0]));
-                data.add(14, Double.toString(temp[1]));
-                data.add(15, Double.toString(temp[2]));
-                data.add(16, Double.toString(temp[3]));
-                data.add(17, Double.toString(temp[4]));
+                data.set(13, Double.toString(temp[0]));
+                data.set(14, Double.toString(temp[1]));
+                data.set(15, Double.toString(temp[2]));
+                data.set(16, Double.toString(temp[3]));
+                data.set(17, Double.toString(temp[4]));
                 i = new Intent(RectTesting.this, PieTesting.class);
                 i.putExtra("DATA", data);
                 startActivity(i);

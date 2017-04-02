@@ -23,11 +23,11 @@ public class UserInput extends AppCompatActivity  {
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
             if(data.size()<4) {
-                data.add(3, "");
-                data.add(4, "");
-                data.add(5, "");
-                data.add(6, "");
-                data.add(7, "");
+                //data.add(3, "");
+                //data.add(4, "");
+                //data.add(5, "");
+                //data.add(6, "");
+                //data.add(7, "");
             }
             else
             {
@@ -67,7 +67,7 @@ public class UserInput extends AppCompatActivity  {
                                            public void onClick(DialogInterface dialog, int whichButton) {
 
                                                // Do something with value!
-                                               data.add(3, input.getText().toString());
+                                               data.set(3, input.getText().toString());
                                                desc0=input.getText().toString();
                                            }
                                        });
@@ -95,7 +95,7 @@ public class UserInput extends AppCompatActivity  {
                                                public void onClick(DialogInterface dialog, int whichButton) {
 
                                                    // Do something with value!
-                                                   data.add(4, input.getText().toString());
+                                                   data.set(4, input.getText().toString());
                                                    desc1=input.getText().toString();
                                                }
                                            });
@@ -123,7 +123,7 @@ public class UserInput extends AppCompatActivity  {
                                                 public void onClick(DialogInterface dialog, int whichButton) {
 
                                                     // Do something with value!
-                                                    data.add(5, input.getText().toString());
+                                                    data.set(5, input.getText().toString());
                                                     desc2=input.getText().toString();
                                                 }
                                             });
@@ -151,7 +151,7 @@ public class UserInput extends AppCompatActivity  {
                                                 public void onClick(DialogInterface dialog, int whichButton) {
 
                                                     // Do something with value!
-                                                    data.add(6, input.getText().toString());
+                                                    data.set(6, input.getText().toString());
                                                     desc3=input.getText().toString();
                                                 }
                                             });
@@ -179,7 +179,7 @@ public class UserInput extends AppCompatActivity  {
                                                 public void onClick(DialogInterface dialog, int whichButton) {
 
                                                     // Do something with value!
-                                                    data.add(7, input.getText().toString());
+                                                    data.set(7, input.getText().toString());
                                                     desc4=input.getText().toString();
                                                 }
                                             });
@@ -199,11 +199,11 @@ public class UserInput extends AppCompatActivity  {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                data.add(8, ((EditText)findViewById(R.id.FirstArea)).getText().toString());
-                data.add(9, ((EditText)findViewById(R.id.SecondArea)).getText().toString());
-                data.add(10, ((EditText)findViewById(R.id.ThirdArea)).getText().toString());
-                data.add(11, ((EditText)findViewById(R.id.FourthArea)).getText().toString());
-                data.add(12, ((EditText)findViewById(R.id.FifthArea)).getText().toString());
+                data.set(8, ((EditText)findViewById(R.id.FirstArea)).getText().toString());
+                data.set(9, ((EditText)findViewById(R.id.SecondArea)).getText().toString());
+                data.set(10, ((EditText)findViewById(R.id.ThirdArea)).getText().toString());
+                data.set(11, ((EditText)findViewById(R.id.FourthArea)).getText().toString());
+                data.set(12, ((EditText)findViewById(R.id.FifthArea)).getText().toString());
 
                 i = new Intent(UserInput.this, Screen2SampleBar.class);
                 i.putExtra("DATA", data);

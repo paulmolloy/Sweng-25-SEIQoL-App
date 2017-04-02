@@ -52,9 +52,8 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                data.add(18, Integer.toString(underRGroup.getCheckedRadioButtonId()));
-                data.add(19, Integer.toString(boredomRGroup.getCheckedRadioButtonId()));
+                data.set(23, Integer.toString(underRGroup.getCheckedRadioButtonId()));
+                data.set(24, Integer.toString(boredomRGroup.getCheckedRadioButtonId()));
 
                 i = new Intent(Screen7InterviewerRecord.this, Screen8Result.class);
                 i.putExtra("DATA", data);
@@ -69,7 +68,7 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
 
 
                 j = new Intent(Screen7InterviewerRecord.this, PieTesting.class);
-                i.putExtra("DATA", data);
+                j.putExtra("DATA", data);
                 startActivity(j);
             }
         });

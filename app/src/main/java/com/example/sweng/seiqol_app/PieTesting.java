@@ -78,11 +78,11 @@ public class PieTesting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 double[] temp = myDView.getAllBarValues();
-                data.add(18, Double.toString(temp[0]));
-                data.add(19, Double.toString(temp[1]));
-                data.add(20, Double.toString(temp[2]));
-                data.add(21, Double.toString(temp[3]));
-                data.add(22 , Double.toString(temp[4]));
+                data.set(18, Double.toString(temp[0]));
+                data.set(19, Double.toString(temp[1]));
+                data.set(20, Double.toString(temp[2]));
+                data.set(21, Double.toString(temp[3]));
+                data.set(22 , Double.toString(temp[4]));
                 i = new Intent(PieTesting.this, Screen7InterviewerRecord.class);
                 i.putExtra("DATA", data);
                 startActivity(i);
@@ -94,7 +94,7 @@ public class PieTesting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                i = new Intent(PieTesting.this, Screen7InterviewerRecord.class);
+                i = new Intent(PieTesting.this, RectTesting.class);
                 i.putExtra("DATA", data);
                 startActivity(i);
             }

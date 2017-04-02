@@ -32,9 +32,35 @@ public class Screen0EnterId extends AppCompatActivity {
                 interviewer = et.getText().toString();
                 Calendar calendar = Calendar.getInstance();
                 time = calendar.getTimeInMillis();
-                data.add(0, respondent);
-                data.add(1, interviewer);
-                data.add(2, Long.toString(time));
+                data.add(0,"");
+                data.add(1,"");
+                data.add(2,"");
+                data.add(3,"");
+                data.add(4,"");
+                data.add(5,"");
+                data.add(6,"");
+                data.add(7,"");
+                data.add(8,"");
+                data.add(9,"");
+                data.add(10,"");
+                data.add(11,"");
+                data.add(12,"");
+                data.add(13,"");
+                data.add(14,"");
+                data.add(15,"");
+                data.add(16,"");
+                data.add(17,"");
+                data.add(18,"");
+                data.add(19,"");
+                data.add(20,"");
+                data.add(21,"");
+                data.add(22,"");
+                data.add(23,"");
+                data.add(24,"");
+
+                data.set(0, respondent);
+                data.set(1, interviewer);
+                data.set(2, Long.toString(time));
                 i = new Intent(Screen0EnterId.this, UserInput.class);
                 i.putExtra("DATA", data);
 
