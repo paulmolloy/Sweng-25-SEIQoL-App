@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +18,8 @@ import java.util.ArrayList;
 public class Screen2SampleBar extends AppCompatActivity {
     TextView myTv;
     DraggableBarChart myDView;
-    RadioGroup rGroup;
-
+    //RadioGroup rGroup, rGroup1;
+    RadioGroup rg1, rg2;
     Intent i;
     ArrayList<String> data = new ArrayList<>();
     @Override
@@ -27,8 +28,17 @@ public class Screen2SampleBar extends AppCompatActivity {
         setContentView(R.layout.activity_screen2_sample_bar);
         myTv = (TextView) findViewById(R.id.textView2);
         myDView = (DraggableBarChart) findViewById(R.id.dView);
-        rGroup = (RadioGroup) findViewById(R.id.rBG0);
-        rGroup.check(R.id.radioButton2);
+        //rGroup = (RadioGroup) findViewById(R.id.rBG0);
+        //rGroup1 = (RadioGroup) findViewById(R.id.rBG1);
+        rg1 = (RadioGroup) findViewById(R.id.rBG0);
+        rg2 = (RadioGroup) findViewById(R.id.rBG1);
+        rg1.clearCheck(); // this is so we can start fresh, with no selection on both RadioGroups
+        rg2.clearCheck();
+        rg1.setOnCheckedChangeListener(listener1);
+        rg2.setOnCheckedChangeListener(listener2);
+
+        //rGroup.check(R.id.radioButton2);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
@@ -36,30 +46,57 @@ public class Screen2SampleBar extends AppCompatActivity {
 
 
 
-        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // find which radio button is selected
-                // Check which radio button was clicked
-                switch(checkedId) {
-                    case R.id.radioButton0:
-                            myDView.setBarSelected(0);
-                        break;
-                    case R.id.radioButton1:
-                            myDView.setBarSelected(1);
-                        break;
-                    case R.id.radioButton2:
-                            myDView.setBarSelected(2);
-                        break;
-                    case R.id.radioButton3:
-                            myDView.setBarSelected(3);
-                        break;
-                    default :
-                            myDView.setBarSelected(4);
-                        break;
-                }
-            }
-        });
+//        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                // find which radio button is selected
+//                // Check which radio button was
+//                //rGroup1.clearCheck();
+//                if(checkedId==rGroup.getCheckedRadioButtonId()){
+////                    rGroup1.clearCheck();
+//                    switch(checkedId) {
+//                        case R.id.radioButton0:
+//                            myDView.setBarSelected(0);
+//                            break;
+//                        case R.id.radioButton1:
+//                            myDView.setBarSelected(1);
+//                            break;
+//                        case R.id.radioButton2:
+//                            myDView.setBarSelected(2);
+//                            break;
+//
+//                    }
+//                }else{
+//                    Log.e("rg0","clear chsnge");
+//                }
+//
+//            }
+//        });
+//
+//        rGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                // find which radio button is selected
+//                // Check which radio button was clicked
+//                //if (rGroup1.getChildAt(checkedId)==null)   rGroup1.clearCheck();
+//
+//                if(checkedId==rGroup1.getCheckedRadioButtonId()) {
+//                    rGroup.clearCheck();
+//                    switch (checkedId) {
+//                        case R.id.radioButton3:
+//                            myDView.setBarSelected(3);
+//                            break;
+//                        default:
+//                            myDView.setBarSelected(4);
+//                            break;
+//                    }
+//                }else{
+//                    Log.e("rg1","clear chsnge");
+//                }
+//            }
+//        });
+
+
 
 
         Button next = (Button) findViewById(R.id.next_1);
@@ -104,4 +141,57 @@ public class Screen2SampleBar extends AppCompatActivity {
 
         alertDialog.show();
     }
+
+
+    private RadioGroup.OnCheckedChangeListener listener1 = new RadioGroup.OnCheckedChangeListener() {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
+                rg2.setOnCheckedChangeListener(null); // remove the listener before clearing so we don't throw that stackoverflow exception(like Vladimir Volodin pointed out)
+                rg2.clearCheck(); // clear the second RadioGroup!
+                rg2.setOnCheckedChangeListener(listener2); //reset the listener
+                Log.e("XXX2", "do the work");
+
+                switch(checkedId) {
+                        case R.id.radioButton0:
+                            myDView.setBarSelected(0);
+                            break;
+                        case R.id.radioButton1:
+                            myDView.setBarSelected(1);
+                            break;
+                        case R.id.radioButton2:
+                            myDView.setBarSelected(2);
+                            break;
+
+                    }
+            }
+        }
+    };
+
+    private RadioGroup.OnCheckedChangeListener listener2 = new RadioGroup.OnCheckedChangeListener() {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
+                rg1.setOnCheckedChangeListener(null);
+                rg1.clearCheck();
+                rg1.setOnCheckedChangeListener(listener1);
+                Log.e("XXX2", "do the work");
+                switch (checkedId) {
+                        case R.id.radioButton3:
+                            myDView.setBarSelected(3);
+                            break;
+                        default:
+                            myDView.setBarSelected(4);
+                            break;
+                    }
+            }
+        }
+    };
+
+
+
+
+
 }

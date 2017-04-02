@@ -63,7 +63,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton1"
                 android:layout_weight="1"
-                android:buttonTint="#909baf"/>
+                android:buttonTint="#909baf" />
             <RadioButton
                 android:text="Soccer"
                 android:layout_width="wrap_content"
@@ -71,6 +71,20 @@
                 android:id="@+id/radioButton2"
                 android:layout_weight="1"
                 android:buttonTint="#de571d"/>
+
+
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:orientation="horizontal"
+            android:onClick="onRadioButtonClicked"
+            android:id="@+id/rBG1"
+            android:layout_weight="1"
+            >
+
             <RadioButton
                 android:text="Friends"
                 android:layout_width="wrap_content"
@@ -85,6 +99,8 @@
                 android:id="@+id/radioButton4"
                 android:layout_weight="1"
                 android:buttonTint="#308754"/>
+
+
         </RadioGroup>
 
 
