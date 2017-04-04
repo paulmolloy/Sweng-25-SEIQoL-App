@@ -89,17 +89,29 @@ public class DraggableBarChart extends View {
         //draw stroke
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(2);
-        paint.setColor(Color.LTGRAY);
+        paint.setColor(Color.RED);
+        //paint.setStyle(Paint.Style.FILL);
+
         //canvas.drawRect(0,this.getHeight(),this.getWidth(), 0,paint); //draw outline of edges of view
 
+        paint.setStyle(Paint.Style.FILL);
+
+        canvas.drawRect(400,1000,400, 0,paint);
         paint.setStyle(Paint.Style.FILL);
 
         // write testing vals to view
         paint.setColor(Color.BLUE);
         paint.setTextSize(25);
         paint.setStrokeWidth(0);
-        canvas.drawText( bars.get(barSelected).getPercent() + "%  Bar Selected: " + barSelected
-                + " Selected Bar Value: " + bars.get(barSelected).getHeight(), LEFT_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
+//        canvas.drawText( bars.get(barSelected).getPercent() + "%  Bar Selected: " + barSelected
+//                + " Selected Bar Value: " + bars.get(barSelected).getHeight(), LEFT_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
+
+//        canvas.drawText( "c bar y: " + (this.getHeight()-bars.get(barSelected).getHeight()) + "c bar x: "+  bars.get(barSelected).getX() + LEFT_PADDING + " " + bars.get(barSelected).getPercent() + "%  Bar Selected: " + barSelected
+//                + " Selected Bar Value: " + bars.get(barSelected).getHeight(), LEFT_PADDING,400+Y_AXIS_PADDING-paint.getTextSize(), paint);
+//
+//
+//        canvas.drawText( "height: " + (this.getHeight()) + "c bar x: "+  this.getWidth() + " " , LEFT_PADDING,200+Y_AXIS_PADDING-paint.getTextSize(), paint);
+
 
 
         paint.setColor(Color.parseColor("#70DB4255"));
@@ -107,8 +119,16 @@ public class DraggableBarChart extends View {
 
         for(Bar bar: bars){
             paint.setColor(bar.getC());
-            canvas.drawRect( LEFT_PADDING+ bar.getX(),this.getHeight()-Y_AXIS_PADDING,LEFT_PADDING+ bar.getX()+barWidth,
-                    this.getHeight()-bar.getHeight()-Y_AXIS_PADDING,paint);
+//            canvas.drawRect( LEFT_PADDING+ bar.getX(),
+//                    this.getHeight()-Y_AXIS_PADDING,
+//                    LEFT_PADDING+ bar.getX()+barWidth,
+//                    this.getHeight()-bar.getHeight()-Y_AXIS_PADDING,paint);
+
+            canvas.drawRect( LEFT_PADDING+ bar.getX(),
+                    this.getHeight()-bar.getHeight()-Y_AXIS_PADDING,
+                    LEFT_PADDING+ bar.getX()+barWidth,
+                    this.getHeight()-Y_AXIS_PADDING,paint);
+
         }
 
         /* Draw axis here
@@ -122,6 +142,7 @@ public class DraggableBarChart extends View {
 
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
+        //canvas.drawRect( LEFT_PADDING ,Y_AXIS_PADDING,LEFT_PADDING + 150, this.getHeight()-Y_AXIS_PADDING,paint);
 
         canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, LEFT_PADDING,Y_AXIS_PADDING, paint); //Y axis line.
         canvas.drawLine(LEFT_PADDING,this.getHeight()-Y_AXIS_PADDING, this.getWidth(),this.getHeight()-Y_AXIS_PADDING, paint); // X axis line.
