@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,14 +58,19 @@ public class Screen0EnterId extends AppCompatActivity {
                 data.add(22,"");
                 data.add(23,"");
                 data.add(24,"");
+                if(interviewer.length() > 1 && respondent.length() > 1) {
+                    data.set(0, respondent);
+                    data.set(1, interviewer);
+                    data.set(2, Long.toString(time));
+                    i = new Intent(Screen0EnterId.this, UserInput.class);
+                    i.putExtra("DATA", data);
 
-                data.set(0, respondent);
-                data.set(1, interviewer);
-                data.set(2, Long.toString(time));
-                i = new Intent(Screen0EnterId.this, UserInput.class);
-                i.putExtra("DATA", data);
-
-                startActivity(i);
+                    startActivity(i);
+                }
+                else
+                {
+                    displayError(v);
+                }
             }
         });
 
@@ -84,6 +90,19 @@ public class Screen0EnterId extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public void displayError(View view){
+       AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String dMessage = "Please enter a valid name and ID.";
+        builder.setMessage(dMessage);
+        builder.setTitle("Invalid input");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
 
 }

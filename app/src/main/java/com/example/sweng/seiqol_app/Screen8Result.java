@@ -2,6 +2,7 @@ package com.example.sweng.seiqol_app;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GestureDetectorCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +31,9 @@ import java.util.Arrays;
 import java.util.Calendar;
 
 public class Screen8Result extends AppCompatActivity  {
+    public final int GIGA_BYTE = 1073741824;
+    public final int MEGA_BYTE = 1048576;
+    public final int BYTE = 1024;
     long time;
     ArrayList<String> data = new ArrayList<>();
     String dataString;
@@ -46,6 +51,7 @@ public class Screen8Result extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen8_result);
+        getStorage(findViewById(R.id.activity_rect_testing));
         dataDisplayTv = (TextView) findViewById(R.id.data_display_tv);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -172,5 +178,39 @@ public class Screen8Result extends AppCompatActivity  {
 
 
 
+    public void displayDialogBox(View view, long memo, String storageSI){
+        Log.w("Inside", "it's" + memo);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String dMessage = "Your internal memory is now less than " + memo + storageSI + ". Recommend to export as an e-mail to ensure data is not lost.";
+        builder.setMessage(dMessage);
+        builder.setTitle("Storage warning");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
+    public void getStorage(View view){
+        long mem = Environment.getExternalStorageDirectory().getFreeSpace();
+        String storageSI = "";
+        if(mem>=GIGA_BYTE){
+            mem = mem/GIGA_BYTE;
+            storageSI = "GB";
+        }else if(mem>=MEGA_BYTE){
+            mem = mem/MEGA_BYTE;
+            storageSI = "MB";
+        }else{
+            mem = mem/BYTE;
+            storageSI = "KB";
+        }
+        Log.w("Free space", "equals " + mem + storageSI);
+        if(storageSI.equals("MB") && mem<20)
+        {
+            Log.w("Free space", "is" + mem);
+            displayDialogBox(view, mem, storageSI);
+        }
+    }
 }
