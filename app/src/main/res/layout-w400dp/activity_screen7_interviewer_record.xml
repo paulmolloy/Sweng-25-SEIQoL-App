@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_final_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.sweng.seiqol_app.Screen7InterviewerRecord">
+
+    <TextView
+        android:text="1. Time Taken:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeView"
+        android:width="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="2. Understanding of method"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/questionTwo"
+        android:layout_below="@+id/timeView"
+        android:layout_alignLeft="@+id/timeView"
+        android:layout_alignStart="@+id/timeView"
+        android:layout_weight="0.04"/>
+
+    <TextView
+        android:text="3. Fatigue/boredom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rGroup"
+        android:layout_alignLeft="@+id/timeView"
+        android:layout_alignStart="@+id/timeView"
+        android:id="@+id/questionThree"
+        android:layout_weight="2"/>
+
+    <TextView
+        android:text="4. Overall validity of information (in light of 2 and 3 above)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rGroup2"
+        android:layout_alignLeft="@+id/questionThree"
+        android:layout_alignStart="@+id/questionThree"
+        android:id="@+id/questionFour"
+        android:layout_weight="0.04"/>
+
+
+    <TextView
+        android:text="5. Weights assigned to cues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rGroup4"
+        android:layout_alignLeft="@+id/questionFour"
+        android:layout_alignStart="@+id/questionFour"
+        android:id="@+id/weightHeading"
+        android:layout_weight="0.04"/>
+
+    <TextView
+        android:text="Cue 1: Weight(%)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weightHeading"
+        android:layout_alignLeft="@+id/rGroup4"
+        android:layout_alignStart="@+id/rGroup4"
+        android:id="@+id/textView18"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="0.0214"/>
+
+    <TextView
+        android:text="Cue 2: Weight(%)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView18"
+        android:layout_alignLeft="@+id/textView18"
+        android:layout_alignStart="@+id/textView18"
+        android:id="@+id/textView19"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="0.0214"/>
+
+    <TextView
+        android:text="Cue 3: Weight(%)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView19"
+        android:layout_alignLeft="@+id/textView19"
+        android:layout_alignStart="@+id/textView19"
+        android:id="@+id/textView20"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="0.0214"/>
+
+    <TextView
+        android:text="Cue 4: Weight(%)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView20"
+        android:layout_alignLeft="@+id/textView20"
+        android:layout_alignStart="@+id/textView20"
+        android:id="@+id/textView21"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="0.0214"/>
+
+    <TextView
+        android:text="Cue 5: Weight(%)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView21"
+        android:layout_alignLeft="@+id/textView21"
+        android:layout_alignStart="@+id/textView21"
+        android:id="@+id/textView22"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="0.0214"/>
+
+    <TextView
+        android:text="Score:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView22"
+        android:layout_alignLeft="@+id/weightHeading"
+        android:layout_alignStart="@+id/weightHeading"
+        android:id="@+id/scoreRed"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="0.04"
+        android:textColor="@color/red"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:id="@+id/rGroup"
+        android:layout_below="@+id/questionTwo"
+        android:layout_alignRight="@+id/questionFour"
+        android:layout_alignEnd="@+id/questionFour"
+        android:layout_weight="0.08">
+
+        <RadioButton
+            android:text="Not understood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton1"
+            android:layout_weight="1"
+            android:onClick="appendList"/>
+
+        <RadioButton
+            android:text="Poor/uncertain understanding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton2"
+            android:layout_weight="1"
+            android:onClick="appendList"/>
+
+        <RadioButton
+            android:text="Understood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton3"
+            android:layout_weight="1"
+            android:onClick="appendList"/>
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rGroup2"
+        android:width="100dp"
+        android:weightSum="1"
+        android:layout_below="@+id/questionThree"
+        android:layout_toRightOf="@+id/rGroup3"
+        android:layout_toEndOf="@+id/rGroup3"
+        android:layout_marginLeft="0dp"
+        android:layout_weight="0.08" >
+
+        <RadioButton
+            android:text="None"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton4"
+            android:layout_weight="0.32"
+            android:onClick="appendList"/>
+
+        <RadioButton
+            android:text="Some"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton5"
+            android:layout_weight="0.32"
+            android:onClick="appendList"/>
+
+        <RadioButton
+            android:text="A lot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton6"
+            android:layout_weight="0.32"
+            android:onClick="appendList"/>
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:id="@+id/rGroup3"
+        android:layout_below="@+id/questionThree"
+        android:layout_alignLeft="@+id/rGroup"
+        android:layout_marginRight="0dp"
+        android:layout_weight="0.08">
+
+        <RadioButton
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton7"
+            android:layout_weight="0.32"
+            android:onClick="appendList"/>
+
+        <RadioButton
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton8"
+            android:layout_weight="0.32"
+            android:onClick="appendList"/>
+
+        <RadioButton
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton9"
+            android:layout_weight="0.32"
+            android:onClick="appendList"/>
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rGroup4"
+        android:layout_alignLeft="@+id/rGroup"
+        android:layout_below="@+id/questionFour"
+        android:layout_toRightOf="@+id/scoreRed"
+        android:layout_toEndOf="@+id/scoreRed"
+        android:layout_weight="0.08">
+
+        <RadioButton
+            android:text="Definitely invalid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton10"
+            android:layout_weight="1"
+            android:onClick="appendList"/>
+
+        <RadioButton
+            android:text="Uncertain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton11"
+            android:layout_weight="1"
+            android:onClick="appendList"/>
+
+        <RadioButton
+            android:text="Valid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton12"
+            android:layout_weight="1"
+            android:onClick="appendList"/>
+    </RadioGroup>
+
+    <TextView
+        android:text="Weight1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/WeightTwo"
+        android:layout_alignLeft="@+id/timeV"
+        android:id="@+id/WeightOne"
+        android:layout_alignTop="@id/textView18"/>
+
+    <TextView
+        android:text="Weight2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/WeightThree"
+        android:layout_alignRight="@+id/WeightOne"
+        android:layout_alignEnd="@+id/WeightOne"
+        android:id="@+id/WeightTwo"
+        android:layout_alignTop="@id/textView19"/>
+
+    <TextView
+        android:text="Weight3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/WeightFour"
+        android:layout_alignRight="@+id/WeightTwo"
+        android:layout_alignEnd="@+id/WeightTwo"
+        android:id="@+id/WeightThree"
+        android:layout_alignTop="@id/textView20"/>
+
+    <TextView
+        android:text="Weight4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/WeightFive"
+        android:layout_alignRight="@+id/WeightThree"
+        android:layout_alignEnd="@+id/WeightThree"
+        android:id="@+id/WeightFour"
+        android:layout_alignTop="@id/textView21"/>
+
+    <TextView
+        android:text="Weight5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/scoreView"
+        android:layout_alignRight="@+id/WeightFour"
+        android:layout_alignEnd="@+id/WeightFour"
+        android:id="@+id/WeightFive"
+        android:layout_alignTop="@id/textView22"/>
+
+    <TextView
+        android:text="Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeV"
+        android:layout_weight="0.04"
+        android:layout_marginLeft="130dp"
+        android:layout_alignLeft="@+id/rGroup"
+        android:layout_alignStart="@+id/rGroup"
+        android:layout_alignTop="@+id/timeView"/>
+
+    <TextView
+        android:text="score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/scoreRed"
+        android:layout_marginLeft="80dp"
+        android:layout_alignTop="@+id/scoreRed"
+        android:id="@+id/scoreView"
+        android:layout_weight="0.0412"/>
+
+    <Button
+        android:text="Complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/next_7"
+        android:onClick="createCsv"
+        android:layout_weight="0.04"
+        android:layout_alignRight="@+id/WeightFive"
+        android:layout_below="@+id/WeightFive"/>
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/back_7"
+        android:layout_alignLeft="@+id/textView22"
+        android:layout_alignStart="@id/textView22"
+        android:layout_alignTop="@+id/next_7"
+        android:layout_alignBottom="@+id/next_7"/>
+</RelativeLayout>
