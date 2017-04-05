@@ -89,7 +89,8 @@ public class Screen8Result extends AppCompatActivity  {
             public void onClick(View v) {
 
 
-                j = new Intent(Screen8Result.this, PieTesting.class);
+                j = new Intent(Screen8Result.this, Screen7InterviewerRecord.class);
+                j.putExtra("DATA", data);
 
                 startActivity(j);
             }
