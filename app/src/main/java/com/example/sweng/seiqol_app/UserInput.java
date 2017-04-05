@@ -19,6 +19,8 @@ public class UserInput extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen1_cues);
+        EditText et = (EditText)findViewById(R.id.FirstArea);
+        et.requestFocus();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
@@ -31,7 +33,7 @@ public class UserInput extends AppCompatActivity  {
             }
             else
             {
-                EditText et = (EditText)findViewById(R.id.FirstArea);
+                et = (EditText)findViewById(R.id.FirstArea);
                 et.setText(data.get(8));
                 et = (EditText)findViewById(R.id.SecondArea);
                 et.setText(data.get(9));

@@ -56,6 +56,7 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         long mins = totalTime / 60;
         long seconds = totalTime % 60;
         String timeString = Long.toString(mins) + " mins " + Long.toString(seconds) + " seconds";
+        data.set(2, timeString);
 
         for (int i = 0; i < data.size() - 1; i++) Log.e("record", data.get(i));
         TextView tv = (TextView) findViewById(R.id.timeV);

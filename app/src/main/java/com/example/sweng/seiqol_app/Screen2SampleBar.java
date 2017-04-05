@@ -31,6 +31,8 @@ public class Screen2SampleBar extends AppCompatActivity {
         //rGroup = (RadioGroup) findViewById(R.id.rBG0);
         //rGroup1 = (RadioGroup) findViewById(R.id.rBG1);
         rg1 = (RadioGroup) findViewById(R.id.rBG0);
+        RadioButton r1 = (RadioButton) findViewById(R.id.radioButton0);
+        r1.requestFocus();
         rg2 = (RadioGroup) findViewById(R.id.rBG1);
         rg1.clearCheck(); // this is so we can start fresh, with no selection on both RadioGroups
         rg2.clearCheck();
@@ -43,60 +45,6 @@ public class Screen2SampleBar extends AppCompatActivity {
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
         }
-
-
-
-//        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                // find which radio button is selected
-//                // Check which radio button was
-//                //rGroup1.clearCheck();
-//                if(checkedId==rGroup.getCheckedRadioButtonId()){
-////                    rGroup1.clearCheck();
-//                    switch(checkedId) {
-//                        case R.id.radioButton0:
-//                            myDView.setBarSelected(0);
-//                            break;
-//                        case R.id.radioButton1:
-//                            myDView.setBarSelected(1);
-//                            break;
-//                        case R.id.radioButton2:
-//                            myDView.setBarSelected(2);
-//                            break;
-//
-//                    }
-//                }else{
-//                    Log.e("rg0","clear chsnge");
-//                }
-//
-//            }
-//        });
-//
-//        rGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                // find which radio button is selected
-//                // Check which radio button was clicked
-//                //if (rGroup1.getChildAt(checkedId)==null)   rGroup1.clearCheck();
-//
-//                if(checkedId==rGroup1.getCheckedRadioButtonId()) {
-//                    rGroup.clearCheck();
-//                    switch (checkedId) {
-//                        case R.id.radioButton3:
-//                            myDView.setBarSelected(3);
-//                            break;
-//                        default:
-//                            myDView.setBarSelected(4);
-//                            break;
-//                    }
-//                }else{
-//                    Log.e("rg1","clear chsnge");
-//                }
-//            }
-//        });
-
-
 
 
         Button next = (Button) findViewById(R.id.next_1);

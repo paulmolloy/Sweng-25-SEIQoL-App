@@ -29,6 +29,8 @@ public class RectTesting extends AppCompatActivity {
         myDView = (DraggableBarChart) findViewById(R.id.dView);
         rGroup = (RadioGroup) findViewById(R.id.rBG0);
         rGroup.check(R.id.radioButton2);
+        RadioButton r1 = (RadioButton) findViewById(R.id.radioButton0);
+        r1.requestFocus();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getStringArrayList("DATA");
