@@ -78,6 +78,12 @@ public class PieTesting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 double[] temp = myDView.getAllBarValues();
+
+//                data.set(18, Double.toString(roundD(temp[0],4)));
+//                data.set(19, Double.toString(roundD(temp[1],4)));
+//                data.set(20, Double.toString(roundD(temp[2],4)));
+//                data.set(21, Double.toString(roundD(temp[3],4)));
+//                data.set(22 , Double.toString(roundD(temp[4],4)));
                 data.set(18, Double.toString(temp[0]));
                 data.set(19, Double.toString(temp[1]));
                 data.set(20, Double.toString(temp[2]));
@@ -132,5 +138,10 @@ public class PieTesting extends AppCompatActivity {
                 });
 
         alertDialog.show();
+    }
+    public static double roundD(double num, int places){
+        num = Math.round(num * (10*places));
+        num = num/(10*places);
+        return num;
     }
 }

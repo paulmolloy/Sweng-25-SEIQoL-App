@@ -62,9 +62,26 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         TextView tv = (TextView) findViewById(R.id.timeV);
         tv.setText(timeString);
 
-//        TextView weight1 = (TextView) findViewById(R.id.timeV);
-//        tv.setText(data);
+        TextView weight1 = (TextView) findViewById(R.id.WeightOne);
+        weight1.setText(data.get(18));
+        TextView weight2 = (TextView) findViewById(R.id.WeightTwo);
+        weight2.setText(data.get(19));
+        TextView weight3 = (TextView) findViewById(R.id.WeightThree);
+        weight3.setText(data.get(20));
+        TextView weight4 = (TextView) findViewById(R.id.WeightFour);
+        weight4.setText(data.get(21));
+        TextView weight5 = (TextView) findViewById(R.id.WeightFive);
+        weight5.setText(data.get(22));
 
+        //calculating SEIQoL Score
+        Double seiqolScore = (Double.parseDouble(data.get(18)) * Double.parseDouble(data.get(13)))
+                + (Double.parseDouble(data.get(19)) * Double.parseDouble(data.get(14)))
+                + (Double.parseDouble(data.get(20)) * Double.parseDouble(data.get(15)))
+                + (Double.parseDouble(data.get(21)) * Double.parseDouble(data.get(16)))
+                + (Double.parseDouble(data.get(22)) * Double.parseDouble(data.get(17)));
+        data.set(27, seiqolScore.toString());
+        TextView sScore = (TextView) findViewById(R.id.scoreView);
+        sScore.setText(data.get(27));
 
         Button next = (Button) findViewById(R.id.next_7);
         next.setOnClickListener(new View.OnClickListener() {
