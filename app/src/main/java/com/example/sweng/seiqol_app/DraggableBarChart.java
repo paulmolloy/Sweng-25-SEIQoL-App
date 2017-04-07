@@ -116,7 +116,7 @@ public class DraggableBarChart extends View {
 
         paint.setColor(Color.parseColor("#70DB4255"));
 
-
+//draw bars
         for(Bar bar: bars){
             paint.setColor(bar.getC());
 //            canvas.drawRect( LEFT_PADDING+ bar.getX(),

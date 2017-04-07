@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -22,6 +23,7 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
     Intent j;
     RadioGroup underRGroup, boredomRGroup;
     RadioGroup rg1,rg2,rg3,rg4;
+    long startTime;
     private static final int LIST_INDEX_START = 23;
 
     @Override
@@ -51,7 +53,7 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
 
         Calendar calendar = Calendar.getInstance();
         time = calendar.getTimeInMillis();
-        long startTime = Long.parseLong(data.get(2));
+        startTime = Long.parseLong(data.get(2));
         long totalTime = (time - startTime) / 1000;
         long mins = totalTime / 60;
         long seconds = totalTime % 60;
@@ -79,7 +81,12 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
                 + (Double.parseDouble(data.get(20)) * Double.parseDouble(data.get(15)))
                 + (Double.parseDouble(data.get(21)) * Double.parseDouble(data.get(16)))
                 + (Double.parseDouble(data.get(22)) * Double.parseDouble(data.get(17)));
-        data.set(27, seiqolScore.toString());
+
+        //round seiqol score to 4 places.
+        //seiqolScore = PieTesting.roundD(seiqolScore,4);
+        DecimalFormat df = new DecimalFormat("#.####");
+
+        data.set(27, df.format(seiqolScore));
         TextView sScore = (TextView) findViewById(R.id.scoreView);
         sScore.setText(data.get(27));
 
@@ -146,8 +153,7 @@ public class Screen7InterviewerRecord extends AppCompatActivity  {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                data.set(2, Long.toString(startTime));
                 j = new Intent(Screen7InterviewerRecord.this, PieTesting.class);
                 j.putExtra("DATA", data);
                 startActivity(j);

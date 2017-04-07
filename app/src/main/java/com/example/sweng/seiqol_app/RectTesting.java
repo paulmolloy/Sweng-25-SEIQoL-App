@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class RectTesting extends AppCompatActivity {
@@ -83,17 +84,19 @@ public class RectTesting extends AppCompatActivity {
 
                 double[] temp = myDView.getAllBarValues();
 
-//                data.set(13, Double.toString(PieTesting.roundD(temp[0],4)));
-//                data.set(14, Double.toString(PieTesting.roundD(temp[1],4)));
-//                data.set(15, Double.toString(PieTesting.roundD(temp[2],4)));
-//                data.set(16, Double.toString(PieTesting.roundD(temp[3],4)));
-//                data.set(17 , Double.toString(PieTesting.roundD(temp[4],4)));
+//rounding 2 four places
+                DecimalFormat df = new DecimalFormat("#.####");
+                data.set(13, df.format(temp[0]));
+                data.set(14, df.format(temp[1]));
+                data.set(15, df.format(temp[2]));
+                data.set(16, df.format(temp[3]));
+                data.set(17 , df.format(temp[4]));
 
-                data.set(13, Double.toString(temp[0]));
-                data.set(14, Double.toString(temp[1]));
-                data.set(15, Double.toString(temp[2]));
-                data.set(16, Double.toString(temp[3]));
-                data.set(17 , Double.toString(temp[4]));
+//                data.set(13, Double.toString(temp[0]));
+//                data.set(14, Double.toString(temp[1]));
+//                data.set(15, Double.toString(temp[2]));
+//                data.set(16, Double.toString(temp[3]));
+//                data.set(17 , Double.toString(temp[4]));
                 i = new Intent(RectTesting.this, ScreenSamplePie.class);
                 i.putExtra("DATA", data);
                 startActivity(i);

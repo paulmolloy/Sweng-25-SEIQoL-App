@@ -119,6 +119,7 @@ public class DraggablePieChart extends View{
         mPaintText.setColor(Color.BLACK);
         mPaintText.setTextSize(MARKER_TEXT_SIZE);
 
+        //Draw markers
         for(int i=0;i<100;i+=MARKER_INTERVAL){
             mArc = new Path();
             mArc.addArc(outerOval, ((float)i/100)*NUM_DEGREES, i+MARKER_TEXT_PADDING);
@@ -133,7 +134,7 @@ public class DraggablePieChart extends View{
         paint.setColor(bars.get(barSelected).getC());
         canvas.drawArc(oval, (float) (bars.get(barSelected).getPercent()*NUM_DEGREES)-CUR_BAR_TAB_WIDTH ,CUR_BAR_TAB_WIDTH, true, paint);
 
-
+        //draw segments
         oval.set(Y_AXIS_PADDING+TEXT_PADDING, Y_AXIS_PADDING+TEXT_PADDING+yCenteringPadding, this.getWidth()-Y_AXIS_PADDING-TEXT_PADDING, this.getWidth()-Y_AXIS_PADDING-TEXT_PADDING+yCenteringPadding);
         for(Bar bar: bars){
             paint.setColor(bar.getC());
