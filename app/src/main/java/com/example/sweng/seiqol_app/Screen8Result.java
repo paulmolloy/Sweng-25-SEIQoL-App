@@ -70,11 +70,11 @@ public class Screen8Result extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 String message = data.get(0);
-                Intent mailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:molloyp1@tcd.ie"));
+                Intent mailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"));
                 //mailIntent.setType("text/plain");
-                mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"molloyp1@tcd.ie"});
-                mailIntent.putExtra(Intent.EXTRA_SUBJECT, "subject here");
-                mailIntent.putExtra(Intent.EXTRA_TEXT, "body text");
+                mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {""});
+                mailIntent.putExtra(Intent.EXTRA_SUBJECT, "SEIQoL Result ID: " +data.get(0) + " Interviewer: " + data.get(1) );
+                mailIntent.putExtra(Intent.EXTRA_TEXT, "SEIQol result attached.");
                 File root = Environment.getExternalStorageDirectory();
                 File file = new File(Environment.getExternalStorageDirectory() + File.separator + "MyApp", message+".csv");
                 if (!file.exists() || !file.canRead()) {
