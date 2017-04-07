@@ -94,7 +94,7 @@ public class RectTesting extends AppCompatActivity {
                 data.set(15, Double.toString(temp[2]));
                 data.set(16, Double.toString(temp[3]));
                 data.set(17 , Double.toString(temp[4]));
-                i = new Intent(RectTesting.this, PieTesting.class);
+                i = new Intent(RectTesting.this, ScreenSamplePie.class);
                 i.putExtra("DATA", data);
                 startActivity(i);
             }
