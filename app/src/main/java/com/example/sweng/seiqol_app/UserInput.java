@@ -15,6 +15,7 @@ public class UserInput extends AppCompatActivity  {
     ArrayList<String> data = new ArrayList<>();
     Intent i;
     String desc0, desc1, desc2, desc3, desc4;
+    boolean descFill=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -196,7 +197,6 @@ public class UserInput extends AppCompatActivity  {
                                         }
                                     });
 
-
         Button next = (Button) findViewById(R.id.next_0);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,10 +206,15 @@ public class UserInput extends AppCompatActivity  {
                 data.set(10, ((EditText)findViewById(R.id.ThirdArea)).getText().toString());
                 data.set(11, ((EditText)findViewById(R.id.FourthArea)).getText().toString());
                 data.set(12, ((EditText)findViewById(R.id.FifthArea)).getText().toString());
-
-                i = new Intent(UserInput.this, Screen2SampleBar.class);
-                i.putExtra("DATA", data);
-                startActivity(i);
+                if(data.get(8).length() > 1 && data.get(9).length() > 1 && data.get(10).length() > 1 && data.get(11).length()>1 && data.get(12).length()>1) {
+                    i = new Intent(UserInput.this, Screen2SampleBar.class);
+                    i.putExtra("DATA", data);
+                    startActivity(i);
+                }
+                else
+                {
+                    displayError(v);
+                }
             }
         });
 
@@ -222,7 +227,22 @@ public class UserInput extends AppCompatActivity  {
             }
         });
 
+
+
     }
 
+    public void displayError(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String dMessage = "Please enter 5 areas.";
+        builder.setMessage(dMessage);
+        builder.setTitle("Invalid input");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
 }
