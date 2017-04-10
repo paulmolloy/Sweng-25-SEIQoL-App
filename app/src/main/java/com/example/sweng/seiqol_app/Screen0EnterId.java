@@ -22,6 +22,35 @@ public class Screen0EnterId extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen0_enter_id);
+        data.add(0,"");//id
+        data.add(1,"");//name
+        data.add(2,"");//time
+        data.add(3,"");//desc
+        data.add(4,"");
+        data.add(5,"");
+        data.add(6,"");
+        data.add(7,"");
+        data.add(8,"");//cues
+        data.add(9,"");
+        data.add(10,"");
+        data.add(11,"");
+        data.add(12,"");
+        data.add(13,"");//bar
+        data.add(14,"");
+        data.add(15,"");
+        data.add(16,"");
+        data.add(17,"");
+        data.add(18,"");//pie
+        data.add(19,"");
+        data.add(20,"");
+        data.add(21,"");
+        data.add(22,"");
+        data.add(23,"");//assess
+        data.add(24,"");
+
+        data.add(25,"");
+        data.add(26,"");
+        data.add(27,"");//seiqol score
 
         Button begin = (Button) findViewById(R.id.begin_0);
         begin.setOnClickListener(new View.OnClickListener() {
@@ -33,31 +62,10 @@ public class Screen0EnterId extends AppCompatActivity {
                 interviewer = et.getText().toString();
                 Calendar calendar = Calendar.getInstance();
                 time = calendar.getTimeInMillis();
-                data.add(0,"");
-                data.add(1,"");
-                data.add(2,"");
-                data.add(3,"");
-                data.add(4,"");
-                data.add(5,"");
-                data.add(6,"");
-                data.add(7,"");
-                data.add(8,"");
-                data.add(9,"");
-                data.add(10,"");
-                data.add(11,"");
-                data.add(12,"");
-                data.add(13,"");
-                data.add(14,"");
-                data.add(15,"");
-                data.add(16,"");
-                data.add(17,"");
-                data.add(18,"");
-                data.add(19,"");
-                data.add(20,"");
-                data.add(21,"");
-                data.add(22,"");
-                data.add(23,"");
-                data.add(24,"");
+
+
+
+
                 if(interviewer.length() > 1 && respondent.length() > 1) {
                     data.set(0, respondent);
                     data.set(1, interviewer);
