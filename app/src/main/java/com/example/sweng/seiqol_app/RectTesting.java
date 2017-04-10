@@ -77,6 +77,7 @@ public class RectTesting extends AppCompatActivity {
 
             }
         });
+        rGroup.check(R.id.radioButton0);
         Button next = (Button) findViewById(R.id.next_2);
         next.setOnClickListener(new View.OnClickListener() {
             @Override

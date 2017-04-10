@@ -27,7 +27,7 @@ public class ScreenSamplePie extends AppCompatActivity {
         myTv = (TextView) findViewById(R.id.textView2);
         myDView = (DraggablePieChart) findViewById(R.id.pieView);
         rGroup = (RadioGroup) findViewById(R.id.rBG0);
-        rGroup.check(R.id.radioButton2);
+        rGroup.check(R.id.radioButton0);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -52,19 +52,19 @@ public class ScreenSamplePie extends AppCompatActivity {
                 // Check which radio button was clicked
                 switch(checkedId) {
                     case R.id.radioButton0:
-                            myDView.setBarSelected(0);
+                            myDView.setBarSelected(4);
                         break;
                     case R.id.radioButton1:
-                            myDView.setBarSelected(1);
+                            myDView.setBarSelected(3);
                         break;
                     case R.id.radioButton2:
                             myDView.setBarSelected(2);
                         break;
                     case R.id.radioButton3:
-                            myDView.setBarSelected(3);
+                            myDView.setBarSelected(1);
                         break;
                     default :
-                            myDView.setBarSelected(4);
+                            myDView.setBarSelected(0);
                         break;
                 }
 

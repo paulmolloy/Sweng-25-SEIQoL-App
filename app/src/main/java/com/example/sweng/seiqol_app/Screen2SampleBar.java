@@ -38,6 +38,8 @@ public class Screen2SampleBar extends AppCompatActivity {
         rg2.clearCheck();
         rg1.setOnCheckedChangeListener(listener1);
         rg2.setOnCheckedChangeListener(listener2);
+        rg1.check(R.id.radioButton0);
+        myDView.setBarSelected(0);
 
         //rGroup.check(R.id.radioButton2);
 

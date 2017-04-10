@@ -28,7 +28,7 @@ public class DraggablePieChart extends View{
     public static final int MARKER_TEXT_PADDING = 5;
     public static final int MARKER_TEXT_SIZE = 30;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
-    private int  barSelected= 2;//-1;
+    private int  barSelected= 4;//-1;
     private boolean isFirstDraw = true;
     private int centerX;
     private int centerY;
@@ -67,11 +67,11 @@ public class DraggablePieChart extends View{
             Add the five bars for the SEiQoL the colors are picked from the photo of the bar chart
          */
         //first param doesnt matter for pie chart
-        bars.add(new Bar(50, 1, "#dcbd0d"));//yellow
-        bars.add(new Bar(200,.8, "#909baf"));//grey
+        bars.add(new Bar(50, 1, "#308754"));//yellow
+        bars.add(new Bar(200,.8, "#7f628e"));//grey
         bars.add(new Bar(350,.6, "#de571d"));//red/orange
-        bars.add(new Bar(500,.4, "#7f628e"));//purple
-        bars.add(new Bar(650, .2, "#308754"));//green
+        bars.add(new Bar(500,.4, "#909baf"));//purple
+        bars.add(new Bar(650, .2, "#dcbd0d"));//green
 
     }
 
@@ -104,7 +104,7 @@ public class DraggablePieChart extends View{
         paint.setColor(Color.BLUE);
         paint.setTextSize(25);
         paint.setStrokeWidth(0);
-        canvas.drawText( getBarValue(barSelected) + "%  Seg Selected: " + barSelected, Y_AXIS_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
+        canvas.drawText( getBarValue(bars.size()-1-barSelected) + "%  Seg Selected: " + (bars.size()-1-barSelected), Y_AXIS_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
 
 
         RectF oval = new RectF();
@@ -225,11 +225,12 @@ public class DraggablePieChart extends View{
 
     public double getBarValue(int barId){
         double val = -1;
-        if(barId>-1 && barId<bars.size()){
-            if(barId==bars.size()-1){
-                val = bars.get(barId).getPercent();
+        int actualBarId = bars.size()-1-barId;
+        if(actualBarId>-1 && actualBarId<bars.size()){
+            if(actualBarId==bars.size()-1){
+                val = bars.get(actualBarId).getPercent();
             }else{
-                val = bars.get(barId).getPercent() - bars.get(barId+1).getPercent();
+                val = bars.get(actualBarId).getPercent() - bars.get(actualBarId+1).getPercent();
             }
         }
         return val;
