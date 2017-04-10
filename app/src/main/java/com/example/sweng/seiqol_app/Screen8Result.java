@@ -9,6 +9,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AlertDialog;
@@ -29,6 +30,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 public class Screen8Result extends AppCompatActivity  {
     public final int GIGA_BYTE = 1073741824;
@@ -70,21 +72,66 @@ public class Screen8Result extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 String message = data.get(0);
-                Intent mailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"));
-                //mailIntent.setType("text/plain");
-                mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {""});
-                mailIntent.putExtra(Intent.EXTRA_SUBJECT, "SEIQoL Result ID: " +data.get(0) + " Interviewer: " + data.get(1) );
-                mailIntent.putExtra(Intent.EXTRA_TEXT, "SEIQol result attached.");
-                File root = Environment.getExternalStorageDirectory();
-                File file = new File(Environment.getExternalStorageDirectory() + File.separator + "MyApp", message+".csv");
+
+//                  Only works for gmail but gives lots of options. Does not work for outlook
+//                Intent mailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"));
+//                //mailIntent.setType("text/plain");
+//                mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {""});
+//                mailIntent.putExtra(Intent.EXTRA_SUBJECT, "SEIQoL Result ID: " +data.get(0) + " Interviewer: " + data.get(1) );
+//                mailIntent.putExtra(Intent.EXTRA_TEXT, "SEIQol result attached.");
+//                File root = Environment.getExternalStorageDirectory();
+//                File file = new File(Environment.getExternalStorageDirectory() + File.separator + "SEIQoL", message+".csv");
+//                if (!file.exists() || !file.canRead()) {
+//                    Toast.makeText(Screen8Result.this, "Attachment Error", Toast.LENGTH_SHORT).show();
+//                    finish();
+//                    //return;
+//                }
+//                Uri uri = Uri.fromFile(file);
+//                mailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+//                startActivity(Intent.createChooser(mailIntent, "Send email..."));
+
+
+////                Gives lots of options for sharing but works for outlook
+
+//                Intent intent = new Intent(Intent.ACTION_SEND);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
+//                intent.putExtra(Intent.EXTRA_SUBJECT, "SEIQoL Result ID:" +data.get(0) + " Interviewer: " + data.get(1) );
+//                intent.putExtra(Intent.EXTRA_TEXT, "SEIQol result attached.");
+////                mailIntent.setData(uri);
+//                File root = Environment.getExternalStorageDirectory();
+//                File file = new File(Environment.getExternalStorageDirectory() + File.separator + "SEIQoL", message+".csv");
+//                if (!file.exists() || !file.canRead()) {
+//                    Toast.makeText(Screen8Result.this, "Attachment Error", Toast.LENGTH_SHORT).show();
+//                    finish();
+//                    //return;
+//                }
+//                Uri fileUri = Uri.fromFile(file);
+//                intent.putExtra(Intent.EXTRA_STREAM, fileUri);
+//                intent.setType("text/plain");
+//                startActivity(Intent.createChooser(intent, "Send email"));
+
+
+                Intent email = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                email.setType("text/plain");
+                email.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
+                email.putExtra(Intent.EXTRA_SUBJECT, "SEIQoL Result ID:" +data.get(0) + " Interviewer: " + data.get(1));
+                email.putExtra(Intent.EXTRA_TEXT, "SEIQol result attached.");
+
+                ArrayList<Parcelable> uris = new ArrayList<Parcelable>();
+                File file = new File(Environment.getExternalStorageDirectory() + File.separator + "SEIQoL", message+".csv");
                 if (!file.exists() || !file.canRead()) {
                     Toast.makeText(Screen8Result.this, "Attachment Error", Toast.LENGTH_SHORT).show();
                     finish();
                     //return;
                 }
-                Uri uri = Uri.parse("file://" + file);
-                mailIntent.putExtra(Intent.EXTRA_STREAM, uri);
-                startActivity(Intent.createChooser(mailIntent, "Send email..."));
+                Uri fileUri = Uri.fromFile(file);
+                uris.add(fileUri);
+
+                email.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+
+                startActivity(Intent.createChooser(email, "Send mail..."));
+
 
             }
         });
@@ -105,7 +152,7 @@ public class Screen8Result extends AppCompatActivity  {
 
 
     }
-
+    //writes the file poor name
     public void sendMessage(){
         Intent intent = new Intent(this, HelpScreen.class);
         EditText editText = (EditText) findViewById(R.id.edit_message);
@@ -118,7 +165,7 @@ public class Screen8Result extends AppCompatActivity  {
 
 
             //File myPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PODCASTS);
-            File csbFile = new File(Environment.getExternalStorageDirectory() + File.separator + "MyApp", message+".csv");
+            File csbFile = new File(Environment.getExternalStorageDirectory() + File.separator + "SEIQoL", message+".csv");
             csbFile.getParentFile().mkdirs(); //creates the directory for the file
             try {
                 csbFile.createNewFile();// creates the file itself
