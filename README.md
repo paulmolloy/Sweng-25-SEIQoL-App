@@ -1,5 +1,6 @@
 # Sweng-25-SEIQoL-App
 Android app for conducting Quality of Life Evaluations using a tablet
+The app stores the resulting data in a csv in '/SEIQol' on the phone and can be exported from the app by email/gDrive etc.
 
 <img src="https://raw.githubusercontent.com/paulmolloy/Sweng-25-SEIQoL-App/master/demo_images/demopie.png" width="350">
 This project can be opened with android studio.
