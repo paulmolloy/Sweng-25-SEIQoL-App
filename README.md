@@ -1,9 +1,7 @@
 # Sweng-25-SEIQoL-App
-Android app for conducting Quality of Life Evaluations
+Android app for conducting Quality of Life Evaluations using a tablet
 
-Android App for SEIQoL Evaluations using a tablet.
-
-<img src="https://raw.githubusercontent.com/paulmolloy/Sweng-25-SEIQoL-App/master/demo_images/demopie.png" width="600">
+<img src="https://raw.githubusercontent.com/paulmolloy/Sweng-25-SEIQoL-App/master/demo_images/demopie.png" width="350">
 This project can be opened with android studio.
 
 To run the compiled and built app: 
