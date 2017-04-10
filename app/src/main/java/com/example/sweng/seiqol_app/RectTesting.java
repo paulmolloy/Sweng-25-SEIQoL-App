@@ -78,6 +78,7 @@ public class RectTesting extends AppCompatActivity {
             }
         });
         rGroup.check(R.id.radioButton0);
+
         Button next = (Button) findViewById(R.id.next_2);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,11 +88,11 @@ public class RectTesting extends AppCompatActivity {
 
 //rounding 2 four places
                 DecimalFormat df = new DecimalFormat("#.####");
-                data.set(13, df.format(temp[0]));
-                data.set(14, df.format(temp[1]));
-                data.set(15, df.format(temp[2]));
-                data.set(16, df.format(temp[3]));
-                data.set(17 , df.format(temp[4]));
+                data.set(13, df.format(temp[0]*100.0));
+                data.set(14, df.format(temp[1]*100.0));
+                data.set(15, df.format(temp[2]*100.0));
+                data.set(16, df.format(temp[3]*100.0));
+                data.set(17 , df.format(temp[4]*100.0));
 
 //                data.set(13, Double.toString(temp[0]));
 //                data.set(14, Double.toString(temp[1]));
