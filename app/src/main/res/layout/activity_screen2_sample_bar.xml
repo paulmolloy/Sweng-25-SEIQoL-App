@@ -50,7 +50,7 @@
             >
 
             <RadioButton
-                android:text="School"
+                android:text="Cue 1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton0"
@@ -58,14 +58,14 @@
                 android:buttonTint="#dcbd0d"/>
 
             <RadioButton
-                android:text="Work"
+                android:text="Cue 2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton1"
                 android:layout_weight="1"
                 android:buttonTint="#909baf" />
             <RadioButton
-                android:text="Soccer"
+                android:text="Cue 3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton2"
@@ -86,14 +86,14 @@
             >
 
             <RadioButton
-                android:text="Friends"
+                android:text="Cue 4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton3"
                 android:layout_weight="1"
                 android:buttonTint="#7f628e"/>
             <RadioButton
-                android:text="Family"
+                android:text="Cue 5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/radioButton4"

@@ -104,7 +104,7 @@ public class DraggablePieChart extends View{
         paint.setColor(Color.BLUE);
         paint.setTextSize(25);
         paint.setStrokeWidth(0);
-        canvas.drawText( getBarValue(bars.size()-1-barSelected) + "%  Seg Selected: " + (bars.size()-1-barSelected), Y_AXIS_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
+        //canvas.drawText( getBarValue(bars.size()-1-barSelected) + "%  Seg Selected: " + (bars.size()-1-barSelected), Y_AXIS_PADDING,Y_AXIS_PADDING-paint.getTextSize(), paint);
 
 
         RectF oval = new RectF();

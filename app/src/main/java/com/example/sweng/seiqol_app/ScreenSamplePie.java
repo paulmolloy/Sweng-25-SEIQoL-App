@@ -34,16 +34,16 @@ public class ScreenSamplePie extends AppCompatActivity {
             data = extras.getStringArrayList("DATA");
         }
 
-        TextView tv = (TextView) findViewById(R.id.radioButton0);
-        tv.setText(data.get(8));
-        tv = (TextView) findViewById(R.id.radioButton1);
-        tv.setText(data.get(9));
-        tv = (TextView) findViewById(R.id.radioButton2);
-        tv.setText(data.get(10));
-        tv = (TextView) findViewById(R.id.radioButton3);
-        tv.setText(data.get(11));
-        tv = (TextView) findViewById(R.id.radioButton4);
-        tv.setText(data.get(12));
+//        TextView tv = (TextView) findViewById(R.id.radioButton0);
+//        tv.setText(data.get(8));
+//        tv = (TextView) findViewById(R.id.radioButton1);
+//        tv.setText(data.get(9));
+//        tv = (TextView) findViewById(R.id.radioButton2);
+//        tv.setText(data.get(10));
+//        tv = (TextView) findViewById(R.id.radioButton3);
+//        tv.setText(data.get(11));
+//        tv = (TextView) findViewById(R.id.radioButton4);
+//        tv.setText(data.get(12));
 
         rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
