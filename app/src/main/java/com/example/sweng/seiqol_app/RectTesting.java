@@ -118,12 +118,13 @@ public class RectTesting extends AppCompatActivity {
 
         AlertDialog alertDialog = new AlertDialog.Builder(RectTesting.this).create();
         alertDialog.setTitle("Instructions");
-        alertDialog.setMessage("Now I want you to rate the five most important areas of your life, as you see\n" +
-                "presented here (indicate). Firstly, draw a bar which represents how you\n" +
-                "would rate yourself on each of these areas at the moment. As in the example\n" +
-                "I’ve just shown you, the nearer you draw the bar to the bottom line, the\n" +
-                "poorer you are rating that area of your life and the nearer you draw it to the\n" +
-                "top, the better your rating of that area of your life."
+        alertDialog.setMessage("The next step is to rate the five most important areas of your life, as you see " +
+                "presented here. Firstly, one at a time select an area of your life from the coloured buttons" +
+                " below by tapping and then drag the bar which represents how you " +
+                "would rate yourself on each of these areas at the moment. As in the example " +
+                "shown on the previous page, the nearer you drag the bar to the bottom line, the " +
+                "poorer you are rating that area of your life and the nearer you draw it to the " +
+                "top, the better your rating of that area of your life. Repeat this process for the five areas."
         );
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {

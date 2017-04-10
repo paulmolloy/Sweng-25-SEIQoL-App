@@ -72,15 +72,18 @@ public class Screen2SampleBar extends AppCompatActivity {
 
         AlertDialog alertDialog = new AlertDialog.Builder(Screen2SampleBar.this).create();
         alertDialog.setTitle("Instructions");
-        alertDialog.setMessage("Now that you have named the five most important areas in your life, I am\n" +
-                "going to ask you to rate how each of these areas are for you at the moment.\n" +
-                "First I will show you an example of how the rating is done\n" +
-                "First look at this box (indicate). As you can see, there are spaces at the\n" +
-                "bottom in which I can write the five important areas of my life (indicate), and\n" +
-                "there is a scale along the left hand side (indicate). The scale ranges from\n" +
-                "‘worst possible’ on the bottom to ‘best possible’ on the top, and passes\n" +
-                "through levels such as ‘very bad’ – ‘bad’ – ‘neither good nor bad’ – ‘good’ –\n" +
-                "and ‘very good’ between the two extremes."
+        alertDialog.setMessage("Now that you have named the five most important areas in your life, the next step " +
+                "is to rate how each of these areas are for you at the moment.\n" +
+                "First the demonstrator will show you an example of how the rating is done\n" +
+                "First look at this bar chart. As you can see, there are spaces at the " +
+                "bottom in which there are some sample five important areas of someones life with a colored button " +
+                "beside each of them , and " +
+                "there is a scale along the left hand side. The scale ranges from " +
+                "‘worst possible’ on the bottom to ‘best possible’ on the top, and passes " +
+                "through levels such as ‘very bad’ – ‘bad’ – ‘neither good nor bad’ – ‘good’ – " +
+                "and ‘very good’ between the two extremes. A value for each area of someones life " +
+                "can be entered by tapping a coloured button to select that area and then dragging that color bar " +
+                "to the desired level."
         );
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {

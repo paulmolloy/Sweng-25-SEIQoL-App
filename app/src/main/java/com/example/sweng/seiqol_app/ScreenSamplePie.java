@@ -105,7 +105,33 @@ public class ScreenSamplePie extends AppCompatActivity {
             }
         });
 
+        AlertDialog alertDialog = new AlertDialog.Builder(ScreenSamplePie.this).create();
+        alertDialog.setTitle("Instructions");
+        alertDialog.setMessage("The next step is to show how important the five areas of life you have " +
+                "nominated area in relation to each other, by using the pie-chart disk on the screen. " +
+                "First the demonstrator will show you an example of how the rating is done.\n" +
+                "People often value some areas in life as more important than others.\n" +
+                "This disk allows the interviewer to be shown how important each area in your life is by " +
+                "giving the more important areas a larger area of the disk, and the less " +
+                "important areas a smaller area of the disk. " +
+                "First look at this pie chart on the screen. As you can see, there are spaces at the " +
+                        "bottom in which there are some sample five important areas of someones life with a colored button " +
+                        "beside each of them." +
+                        "When one of the colored buttons representing an area of life is selected, the corresponding " +
+                        "coloured segment of the piechart is selected and a small tab appears where it can be dragged to resize it " +
+                        "The importance of each of the areas of life can be recorded on this pie chart this way by selecting the regments " +
+                        "and resizing the space on the disk, the importance of the last segment (green) is the leftover space from" +
+                        " the other four areas."
 
+        );
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        alertDialog.show();
 
 
     }

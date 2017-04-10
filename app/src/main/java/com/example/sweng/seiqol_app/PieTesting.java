@@ -113,25 +113,21 @@ public class PieTesting extends AppCompatActivity {
 
         AlertDialog alertDialog = new AlertDialog.Builder(PieTesting.this).create();
         alertDialog.setTitle("Instructions");
-        alertDialog.setMessage("I would like you to show me how important the five areas of life you have\n" +
-                "nominated area in relation to each other, by using this disk (indicate SEIQoL-\n" +
-                "DW). People often value some areas in life as more important than others.\n" +
-                "This disk allows you to show me how important each area in your life is by\n" +
-                "giving the more important areas a larger area of the disk, and the less\n" +
-                "important areas a smaller area of the disk. In my life, for example, X (name\n" +
-                "cue not already chosen by respondent) is about this important (manipulate disk so\n" +
-                "that X represents 30% of space available). X 2 however is less important than X,\n" +
-                "so it has only this much of the pie (manipulate disk so that X 2 represents 20% of\n" +
-                "the space available). X 3 on the other hand is more important than X, so it has\n" +
-                "this much of the pie (manipulate DWP so that X 3 represents 40% of space\n" +
-                "available). Finally, X 4 and X 5 are the least important areas of life for me, and\n" +
-                "I value them about the same (manipulate disk so that X 4 and X 5 represent 5% each\n" +
-                "of space available). Now thinking about the five areas of life you have\n" +
-                "mentioned (write the name of each cue along the cut edge of one of the 5 coloured\n" +
-                "disks with a non-permanent marker [disks may also be marked with stick-on ‘post-\n" +
-                "it’ labels indicating the cues if preferred]). I would like you to show me how\n" +
-                "important these areas are in relation to each other by moving the disks\n" +
-                "around until their relative size represents your view of their importance"
+        alertDialog.setMessage("The next step is to show how important the five areas of life you have " +
+                "nominated area in relation to each other, by using the pie-chart disk on the screen as demonstrated earlier. " +
+                "People often value some areas in life as more important than others.\n" +
+                "This disk allows you to show me how important each area in your life is by " +
+                "giving the more important areas a larger area of the disk, and the less " +
+                "important areas a smaller area of the disk. "+
+                "Now thinking about the five areas of life you have " +
+                "mentioned.  The next step is to show how " +
+                "important these areas are in relation to each other by moving the disks " +
+                "around until their relative size represents your view of their importance \n" +
+                "When one of the colored buttons representing an area of life is selected, the corresponding " +
+                        "coloured segment of the pie-chart is selected and a small tab appears where it can be dragged to resize it. " +
+                        "The importance of each of the areas of life can be recorded on this pie chart this way by selecting the regments " +
+                        "and resizing the space on the disk, the importance of the last segment (green) is the leftover space from" +
+                        " the other four areas."
         );
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {

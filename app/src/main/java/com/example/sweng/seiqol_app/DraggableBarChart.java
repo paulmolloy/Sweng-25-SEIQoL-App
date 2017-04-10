@@ -63,11 +63,11 @@ public class DraggableBarChart extends View {
         /*
             Add the five bars for the SEiQoL the colors are picked from the photo of the bar chart
          */
-        bars.add(new Bar(50,.3, "#dcbd0d"));//yellow
-        bars.add(new Bar(200,.4, "#909baf"));//grey
-        bars.add(new Bar(350,1, "#de571d"));//red/orange
-        bars.add(new Bar(500,.3, "#7f628e"));//purple
-        bars.add(new Bar(650, .6, "#308754"));//green
+        bars.add(new Bar(50,.5, "#dcbd0d"));//yellow
+        bars.add(new Bar(200,.5, "#909baf"));//grey
+        bars.add(new Bar(350,.5, "#de571d"));//red/orange
+        bars.add(new Bar(500,.5, "#7f628e"));//purple
+        bars.add(new Bar(650, .5, "#308754"));//green
     }
 
     // the method that draws the individual bars

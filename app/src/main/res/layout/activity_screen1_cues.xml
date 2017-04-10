@@ -200,7 +200,7 @@
             android:layout_marginLeft="16dp">
 
             <TextView
-                android:text="Think about five areas in your life that are most important to you. One could be family or career or your favourite sport. In the case of the latter, please specify what aspect of it is important. When you have your five areas, please enter them in the text boxes below."
+                android:text="Think about five areas in your life that are most important to you. If necessary, please specify what aspect of it is important by tapping the description box. When you have your five areas, please enter them in the text boxes below."
                 android:id="@+id/textView2"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintRight_toRightOf="parent"
